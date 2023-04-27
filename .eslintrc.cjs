@@ -11,6 +11,8 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'eslint-disable-next-line react-refresh/only-export-components': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': 'error',
   },
 }

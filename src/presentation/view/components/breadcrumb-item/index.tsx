@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListItem, ListItemText } from '@mui/material'
 import { Link } from 'react-router-dom'
 

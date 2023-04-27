@@ -1,21 +1,13 @@
-import 'react-toastify/dist/ReactToastify.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import {
-  Button,
-  CircularProgress,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
 
 import { Content, LoginForm } from './styles'
-import { InputLoginDto } from '../../../../service'
-import { ToastContainer } from 'react-toastify'
+import { InputLoginDTO } from '../../../../service'
+import { Loading, Toast } from '../../components'
 
 type Props = {
-  handleLogin: (body: InputLoginDto) => Promise<void>
+  handleLogin: (body: InputLoginDTO) => Promise<void>
 }
 
 export const LoginComponent = ({ handleLogin }: Props) => {
@@ -83,11 +75,7 @@ export const LoginComponent = ({ handleLogin }: Props) => {
                   fullWidth
                   disabled={form.isSubmitting}
                 >
-                  {form.isSubmitting ? (
-                    <CircularProgress size={20} />
-                  ) : (
-                    'Entrar'
-                  )}
+                  Entrar
                 </Button>
               </Grid>
             </Grid>
@@ -95,18 +83,9 @@ export const LoginComponent = ({ handleLogin }: Props) => {
         </Paper>
       </Content>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <Loading loading={form.isSubmitting} />
+
+      <Toast />
     </>
   )
 }

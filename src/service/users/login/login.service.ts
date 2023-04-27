@@ -2,11 +2,11 @@ import {
   HttpRequest,
   envAdapter,
   httpClientAdapter,
-} from '../../infra/adapters'
-import { InputLoginDto, OutputLoginDto } from './login.dto'
+} from '../../../infra/adapters'
+import { InputLoginDTO, OutputLoginDTO } from './login.dto'
 
 export class LoginService {
-  async execute(input: InputLoginDto): Promise<OutputLoginDto> {
+  async execute(input: InputLoginDTO): Promise<OutputLoginDTO> {
     const httpRequest: HttpRequest = {
       url: `${envAdapter.apiUrl}/login`,
       method: 'post',

@@ -16,7 +16,6 @@ import { BreadcrumbItem } from '../breadcrumb-item'
 import * as S from './styles'
 
 type Props = {
-  title: string
   listBreadcrumb?: {
     to: string
     text: string
@@ -26,7 +25,6 @@ type Props = {
 }
 
 export const TemplateAdmin = ({
-  title,
   listBreadcrumb,
   currentBreadcrumb,
   children,
@@ -87,11 +85,6 @@ export const TemplateAdmin = ({
 
       <Container maxWidth="xl">
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant="h5" component="h2">
-              {title}
-            </Typography>
-          </Grid>
           <Grid item xs={12}>
             <div role="presentation">
               <Breadcrumbs aria-label="breadcrumb">
