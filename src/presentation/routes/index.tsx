@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Companies, Login } from '../view/pages'
+import { Companies, CompanyUsers, Login } from '../view/pages'
 
 const RoutesRoot = () => {
   return (
@@ -7,6 +7,7 @@ const RoutesRoot = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/empresas" element={<Companies />} />
+        <Route path="/empresas/:id/usuarios" element={<CompanyUsers />} />
       </Routes>
     </BrowserRouter>
   )

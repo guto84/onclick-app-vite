@@ -37,9 +37,8 @@ export const Component = ({
   const form = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values, action) => {
+    onSubmit: async (values) => {
       await handleCompanyCreate(values)
-      action.setSubmitting(false)
       handleCloseModal()
     },
   })

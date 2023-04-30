@@ -1,22 +1,24 @@
+import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
-  companyFindAll,
-  companyDelete,
-  setCompanyDeleteModal,
+  userDelete,
+  companyFindByIdUsers,
+  setUserDeleteModal,
 } from '../../../../store/slices'
 import { Component } from './component'
 
-export const CompanyDelete = () => {
+export const UserDelete = () => {
+  const params = useParams()
   const dispatch = useAppDispatch()
-  const selector = useAppSelector((state) => state.companyDelete)
+  const selector = useAppSelector((state) => state.userDelete)
 
   const handleCompanyDelete = async (): Promise<void> => {
-    await dispatch(companyDelete(selector.id))
-    await dispatch(companyFindAll())
+    await dispatch(userDelete(selector.id))
+    await dispatch(companyFindByIdUsers(params.id || ''))
   }
 
   const handleCompanyDeleteModal = (open: boolean) => {
-    dispatch(setCompanyDeleteModal(open))
+    dispatch(setUserDeleteModal(open))
   }
 
   return (

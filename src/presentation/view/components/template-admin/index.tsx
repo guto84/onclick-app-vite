@@ -4,10 +4,8 @@ import {
   Breadcrumbs,
   Button,
   Box,
-  Card,
   Container,
   Grid,
-  IconButton,
   Menu,
   MenuItem,
   Typography,
@@ -49,7 +47,7 @@ export const TemplateAdmin = ({
                 OnClick Delivery
               </Typography>
               <div>
-                <IconButton
+                <Button
                   size="large"
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
@@ -57,8 +55,8 @@ export const TemplateAdmin = ({
                   onClick={handleMenu}
                   color="inherit"
                 >
-                  <Button color="inherit">Menu</Button>
-                </IconButton>
+                  Menu
+                </Button>
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
@@ -89,8 +87,8 @@ export const TemplateAdmin = ({
             <div role="presentation">
               <Breadcrumbs aria-label="breadcrumb">
                 {listBreadcrumb &&
-                  listBreadcrumb.map((item) => (
-                    <BreadcrumbItem to={item.to} text={item.text} />
+                  listBreadcrumb.map((item, idx) => (
+                    <BreadcrumbItem key={idx} to={item.to} text={item.text} />
                   ))}
                 <Typography color="text.primary">
                   {currentBreadcrumb}
@@ -99,7 +97,7 @@ export const TemplateAdmin = ({
             </div>
           </Grid>
           <Grid item xs={12}>
-            <Card>{children}</Card>
+            {children}
           </Grid>
         </Grid>
       </Container>

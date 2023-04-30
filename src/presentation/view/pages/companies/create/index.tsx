@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
   companyCreate,
   setCompanyCreateModal,
-} from '../../../../store/slices/companies/company-create.slice'
-import { companyFindAll } from '../../../../store/slices/companies/company-find-all.slice'
+  companyFindAll,
+} from '../../../../store/slices'
 import { Component } from './component'
 
 export const CompanyCreate = () => {

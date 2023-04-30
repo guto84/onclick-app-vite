@@ -1,16 +1,14 @@
 import { useCallback, useEffect } from 'react'
 import { Component } from './component'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
-import { companyFindAll } from '../../../../store/slices/companies/company-find-all.slice'
-import { setCompanyCreateModal } from '../../../../store/slices/companies/company-create.slice'
 import {
+  companyFindAll,
+  setCompanyCreateModal,
   setCompanyDeleteId,
   setCompanyDeleteModal,
-} from '../../../../store/slices/companies/company-delete.slice'
-import {
   companyFindById,
   setCompanyUpdateModal,
-} from '../../../../store/slices/companies/company-update.slice'
+} from '../../../../store/slices'
 
 export const CompanyTable = () => {
   const dispatch = useAppDispatch()

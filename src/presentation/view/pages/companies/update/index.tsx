@@ -1,10 +1,10 @@
 import { CompanyUpdateInputDTO } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
-import { companyFindAll } from '../../../../store/slices/companies/company-find-all.slice'
 import {
+  companyFindAll,
   companyUpdate,
   setCompanyUpdateModal,
-} from '../../../../store/slices/companies/company-update.slice'
+} from '../../../../store/slices'
 import { Component } from './component'
 
 export const CompanyUpdate = () => {

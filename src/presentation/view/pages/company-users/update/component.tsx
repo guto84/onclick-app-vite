@@ -5,46 +5,67 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormHelperText,
+  FormLabel,
   Grid,
   IconButton,
   Modal,
   TextField,
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import * as S from '../styles'
-import { CompanyCreateInputDTO } from '../../../../../service'
-import { Company } from '../../../../../domain'
 import { Loading } from '../../../components'
+import * as S from '../styles'
+import {
+  RoleFindAllOutputDTO,
+  UserFindByIdOutputDTO,
+  UserUpdateInputDTO,
+} from '../../../../../service'
 
 type Props = {
+  values: Omit<UserFindByIdOutputDTO, 'company'>
   open: boolean
   loading: boolean
-  values: Company
+  roleList: RoleFindAllOutputDTO
+  roleLoading: boolean
   handleOpen: (open: boolean) => void
-  handleCompanyUpdate: (
-    id: string,
-    input: CompanyCreateInputDTO,
-  ) => Promise<void>
+  handleUserUpdate: (id: string, input: UserUpdateInputDTO) => Promise<void>
 }
 
 export const Component = ({
+  values,
   open,
   loading,
-  values,
+  roleList,
+  roleLoading,
   handleOpen,
-  handleCompanyUpdate,
+  handleUserUpdate,
 }: Props) => {
-  const initialValues = { name: values.name, url: values.url }
+  const initialValues = {
+    name: values.name,
+    email: values.email,
+    roles: values.roles.reduce((acc: string[], item) => {
+      acc.push(item.id)
+      return acc
+    }, []),
+  }
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),
-    url: Yup.string().required('Campo obrigatório'),
+    email: Yup.string().required('Campo obrigatório'),
+    roles: Yup.array()
+      .min(1, 'Selecionar pelo menos uma opção')
+      .of(Yup.string().required())
+      .required(),
   })
 
   const form = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (input) => {
-      await handleCompanyUpdate(values.id, input)
+      await handleUserUpdate(values.id, input)
       handleCloseModal()
     },
     enableReinitialize: true,
@@ -52,6 +73,13 @@ export const Component = ({
 
   const handleCloseModal = () => {
     handleOpen(false)
+    form.handleReset(initialValues)
+  }
+
+  const roles: any = {
+    ROLE_ADMIN: 'Admin',
+    ROLE_PROVIDER: 'Fornecedor',
+    ROLE_USER: 'Usuário',
   }
 
   return (
@@ -99,22 +127,50 @@ export const Component = ({
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
-                      label="URL"
+                      type="email"
+                      label="Email"
                       variant="standard"
                       fullWidth
-                      name="url"
-                      value={form.values.url}
+                      name="email"
+                      value={form.values.email}
                       onChange={form.handleChange}
-                      error={!!(form.touched.url && form.errors.url)}
+                      error={!!(form.touched.email && form.errors.email)}
                       helperText={
-                        !!(form.touched.url && form.errors.url) &&
-                        form.errors.url
+                        !!(form.touched.email && form.errors.email) &&
+                        form.errors.email
                       }
                     />
                   </Grid>
                   <Grid item xs={12}>
+                    <FormControl
+                      required
+                      error={!!(form.touched.roles && form.errors.roles)}
+                      component="fieldset"
+                      variant="standard"
+                    >
+                      <FormLabel component="legend">Permissões</FormLabel>
+                      <FormGroup>
+                        {roleList.map((item) => (
+                          <FormControlLabel
+                            key={item.id}
+                            control={
+                              <Checkbox
+                                checked={form.values.roles.includes(item.id)}
+                              />
+                            }
+                            label={roles[item.rolename]}
+                            name="roles"
+                            value={item.id}
+                            onChange={form.handleChange}
+                          />
+                        ))}
+                      </FormGroup>
+                      <FormHelperText>{form.errors.roles}</FormHelperText>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
                     <Button type="submit" variant="contained" fullWidth>
-                      Salvar
+                      Cadastrar
                     </Button>
                   </Grid>
                 </Grid>
@@ -125,6 +181,7 @@ export const Component = ({
       </Modal>
 
       <Loading loading={loading} />
+      <Loading loading={roleLoading} />
     </>
   )
 }

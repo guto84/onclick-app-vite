@@ -15,14 +15,12 @@ import {
 import {
   DeleteForever as DeleteForeverIcon,
   Edit as EditIcon,
-  PersonAdd as PersonAddIcon,
 } from '@mui/icons-material'
 import { Loading, TemplateAdmin, Toast } from '../../../components'
-import { CompanyFindAllOutputDTO } from '../../../../../service'
-import { Link } from 'react-router-dom'
+import { CompanyFindByIdUsersOutputDTO } from '../../../../../service'
 
 type Props = {
-  list: CompanyFindAllOutputDTO
+  company: CompanyFindByIdUsersOutputDTO
   loading: boolean
   handleCreateModal: (open: boolean) => void
   handleUpdateModal: (id: string) => void
@@ -30,7 +28,7 @@ type Props = {
 }
 
 export const Component = ({
-  list,
+  company,
   loading,
   handleCreateModal,
   handleUpdateModal,
@@ -38,10 +36,32 @@ export const Component = ({
 }: Props) => {
   return (
     <>
-      <TemplateAdmin currentBreadcrumb="Empresas">
+      <TemplateAdmin
+        listBreadcrumb={[{ to: '/empresas', text: 'Empresas' }]}
+        currentBreadcrumb="Usuários"
+      >
+        <Card sx={{ marginBottom: '48px' }}>
+          <CardHeader title="Empresa" />
+          <TableContainer component={CardContent}>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>NOME</TableCell>
+                  <TableCell>URL</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>{company.name}</TableCell>
+                  <TableCell>{company.url}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Card>
         <Card>
           <CardHeader
-            title="Empresas"
+            title="Usuários"
             action={
               <Button
                 variant="contained"
@@ -56,17 +76,17 @@ export const Component = ({
               <TableHead>
                 <TableRow>
                   <TableCell>NOME</TableCell>
-                  <TableCell>URL</TableCell>
-                  <TableCell align="center" width={160}>
+                  <TableCell>EMAIL</TableCell>
+                  <TableCell align="center" width={120}>
                     AÇÕES
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {list.map((row) => (
+                {company.users.map((row) => (
                   <TableRow key={row.id}>
                     <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.url}</TableCell>
+                    <TableCell>{row.email}</TableCell>
                     <TableCell align="center">
                       <Tooltip title="Editar">
                         <IconButton
@@ -85,13 +105,6 @@ export const Component = ({
                         >
                           <DeleteForeverIcon />
                         </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Usuários">
-                        <Link to={`/empresas/${row.id}/usuarios`}>
-                          <IconButton color="success" component="button">
-                            <PersonAddIcon />
-                          </IconButton>
-                        </Link>
                       </Tooltip>
                     </TableCell>
                   </TableRow>
