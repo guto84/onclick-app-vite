@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toastError, toastSuccess } from '../../../view/utils'
 import {
-  CompanyFindByIdOutputDTO,
   CompanyFindByIdService,
-  CompanyUpdateInputDTO,
+  CompanyOutput,
+  CompanyUpdateInput,
   CompanyUpdateService,
 } from '../../../../service'
 
 export type CompanyUpdateState = {
   modal: boolean
   loading: boolean
-  values: CompanyFindByIdOutputDTO
+  values: CompanyOutput
 }
 
 export const companyUpdateInitialState: CompanyUpdateState = {
@@ -25,7 +25,7 @@ export const companyUpdateInitialState: CompanyUpdateState = {
 
 type Props = {
   id: string
-  input: CompanyUpdateInputDTO
+  input: CompanyUpdateInput
 }
 
 export const companyFindById = createAsyncThunk(

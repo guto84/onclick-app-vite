@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toastError } from '../../../view/utils'
 import {
-  CompanyFindByIdUsersOutputDTO,
   CompanyFindByIdUsersService,
+  CompanyUsersOutput,
 } from '../../../../service'
 
 export type CompanyFindByIdUsersState = {
   loading: boolean
-  company: CompanyFindByIdUsersOutputDTO
+  company: CompanyUsersOutput
 }
 
 export const companyFindByIdUsersInitialState: CompanyFindByIdUsersState = {
@@ -33,10 +33,7 @@ export const CompanyFindByIdUsersSlice = createSlice({
   name: 'CompanyFindByIdUsersSlice',
   initialState: companyFindByIdUsersInitialState,
   reducers: {
-    setCompany: (
-      state,
-      action: PayloadAction<CompanyFindByIdUsersOutputDTO>,
-    ) => {
+    setCompany: (state, action: PayloadAction<CompanyUsersOutput>) => {
       state.company = action.payload
     },
     setCompanyLoading: (state, action: PayloadAction<boolean>) => {

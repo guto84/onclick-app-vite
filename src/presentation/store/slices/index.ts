@@ -9,3 +9,8 @@ export * from './roles/role.find-all.slice'
 export * from './users/user-create.slice'
 export * from './users/user-delete.slice'
 export * from './users/user-update.slice'
+
+export * from './groups/group-create.slice'
+export * from './groups/group-delete.slice'
+export * from './groups/group-find-all.slice'
+export * from './groups/group-update.slice'

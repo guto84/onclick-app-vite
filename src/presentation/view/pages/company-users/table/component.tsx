@@ -17,10 +17,10 @@ import {
   Edit as EditIcon,
 } from '@mui/icons-material'
 import { Loading, TemplateAdmin, Toast } from '../../../components'
-import { CompanyFindByIdUsersOutputDTO } from '../../../../../service'
+import { CompanyUsersOutput } from '../../../../../service'
 
 type Props = {
-  company: CompanyFindByIdUsersOutputDTO
+  company: CompanyUsersOutput
   loading: boolean
   handleCreateModal: (open: boolean) => void
   handleUpdateModal: (id: string) => void

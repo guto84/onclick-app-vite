@@ -17,22 +17,21 @@ import {
   TextField,
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import { Loading } from '../../../components'
-import * as S from '../styles'
+import { Loading, ModalCard } from '../../../components'
 import {
-  RoleFindAllOutputDTO,
-  UserFindByIdOutputDTO,
-  UserUpdateInputDTO,
+  RoleOutput,
+  UserRolesOutput,
+  UserUpdateInput,
 } from '../../../../../service'
 
 type Props = {
-  values: Omit<UserFindByIdOutputDTO, 'company'>
+  values: UserRolesOutput
   open: boolean
   loading: boolean
-  roleList: RoleFindAllOutputDTO
+  roleList: RoleOutput[]
   roleLoading: boolean
   handleOpen: (open: boolean) => void
-  handleUserUpdate: (id: string, input: UserUpdateInputDTO) => Promise<void>
+  handleUserUpdate: (id: string, input: UserUpdateInput) => Promise<void>
 }
 
 export const Component = ({
@@ -90,7 +89,7 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <S.ModalCard>
+        <ModalCard>
           <Card>
             <CardHeader
               title=""
@@ -177,7 +176,7 @@ export const Component = ({
               </form>
             </CardContent>
           </Card>
-        </S.ModalCard>
+        </ModalCard>
       </Modal>
 
       <Loading loading={loading} />

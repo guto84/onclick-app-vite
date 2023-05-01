@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { UserUpdateInputDTO } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
   companyFindByIdUsers,
@@ -9,6 +8,7 @@ import {
 } from '../../../../store/slices'
 import { Component } from './component'
 import { useCallback, useEffect } from 'react'
+import { UserUpdateInput } from '../../../../../service'
 
 export const UserUpdate = () => {
   const params = useParams()
@@ -26,7 +26,7 @@ export const UserUpdate = () => {
 
   const handleUserUpdate = async (
     id: string,
-    input: UserUpdateInputDTO,
+    input: UserUpdateInput,
   ): Promise<void> => {
     await dispatch(userUpdate({ id, input }))
     await dispatch(companyFindByIdUsers(params.id || ''))

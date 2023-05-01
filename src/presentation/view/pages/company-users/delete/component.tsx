@@ -9,8 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import * as S from '../styles'
-import { Loading } from '../../../components'
+import { Loading, ModalCard } from '../../../components'
 
 type Props = {
   open: boolean
@@ -37,7 +36,7 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <S.ModalCard>
+        <ModalCard>
           <Card>
             <CardHeader
               title=""
@@ -77,7 +76,7 @@ export const Component = ({
               </Grid>
             </CardContent>
           </Card>
-        </S.ModalCard>
+        </ModalCard>
       </Modal>
 
       <Loading loading={loading} />

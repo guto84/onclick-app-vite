@@ -10,6 +10,11 @@ import userCreateReducer from '../store/slices/users/user-create.slice'
 import userDeleteReducer from '../store/slices/users/user-delete.slice'
 import userUpdateReducer from '../store/slices/users/user-update.slice'
 
+import groupCreateReducer from '../store/slices/groups/group-create.slice'
+import groupDeleteReducer from '../store/slices/groups/group-delete.slice'
+import groupFindAllReducer from '../store/slices/groups/group-find-all.slice'
+import groupUpdateReducer from '../store/slices/groups/group-update.slice'
+
 export const reducers = {
   companyCreate: companyCreateReducer,
   companyFindAll: companyFindAllReducer,
@@ -22,4 +27,9 @@ export const reducers = {
   userCreate: userCreateReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+
+  groupCreate: groupCreateReducer,
+  groupDelete: groupDeleteReducer,
+  groupFindAll: groupFindAllReducer,
+  groupUpdate: groupUpdateReducer,
 }

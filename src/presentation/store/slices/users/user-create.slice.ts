@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toastSuccess } from '../../../view/utils'
-import { UserCreateInputDTO, UserCreateService } from '../../../../service'
+import { UserCreateInput, UserCreateService } from '../../../../service'
 
 export type UserCreateState = {
   modal: boolean
@@ -14,7 +14,7 @@ export const userCreateInitialState: UserCreateState = {
 
 export const userCreate = createAsyncThunk(
   'users/create',
-  async (input: UserCreateInputDTO) => {
+  async (input: UserCreateInput) => {
     const service = new UserCreateService()
     await service.execute(input)
   },

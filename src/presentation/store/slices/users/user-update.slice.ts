@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toastError, toastSuccess } from '../../../view/utils'
 import {
-  UserFindByIdOutputDTO,
   UserFindByIdService,
-  UserUpdateInputDTO,
+  UserRolesOutput,
+  UserUpdateInput,
   UserUpdateService,
 } from '../../../../service'
 
 export type UserUpdateState = {
   modal: boolean
   loading: boolean
-  values: Omit<UserFindByIdOutputDTO, 'company'>
+  values: UserRolesOutput
 }
 
 export const userUpdateInitialState: UserUpdateState = {
@@ -26,7 +26,7 @@ export const userUpdateInitialState: UserUpdateState = {
 
 type Props = {
   id: string
-  input: UserUpdateInputDTO
+  input: UserUpdateInput
 }
 
 export const userFindById = createAsyncThunk(

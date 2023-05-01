@@ -1,4 +1,4 @@
-import { CompanyUpdateInputDTO } from '../../../../../service'
+import { CompanyUpdateInput } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
   companyFindAll,
@@ -13,7 +13,7 @@ export const CompanyUpdate = () => {
 
   const handleCompanyUpdate = async (
     id: string,
-    input: CompanyUpdateInputDTO,
+    input: CompanyUpdateInput,
   ): Promise<void> => {
     await dispatch(companyUpdate({ id, input }))
     await dispatch(companyFindAll())

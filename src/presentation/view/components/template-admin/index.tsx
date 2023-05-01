@@ -81,7 +81,7 @@ export const TemplateAdmin = ({
         </AppBar>
       </Box>
 
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ marginBottom: '96px' }}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <div role="presentation">

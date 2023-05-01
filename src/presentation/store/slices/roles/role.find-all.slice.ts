@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toastError } from '../../../view/utils'
-import { RoleFindAllOutputDTO, RoleFindAllService } from '../../../../service'
+import { RoleFindAllService, RoleOutput } from '../../../../service'
 
 export type RoleFindAllState = {
   loading: boolean
-  list: RoleFindAllOutputDTO
+  list: RoleOutput[]
 }
 
 export const roleFindAllInitialState: RoleFindAllState = {
@@ -21,7 +21,7 @@ export const RoleFindAllSlice = createSlice({
   name: 'RoleFindAllSlice',
   initialState: roleFindAllInitialState,
   reducers: {
-    setRoleList: (state, action: PayloadAction<RoleFindAllOutputDTO>) => {
+    setRoleList: (state, action: PayloadAction<RoleOutput[]>) => {
       state.list = action.payload
     },
     setRoleListLoading: (state, action: PayloadAction<boolean>) => {

@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { UserCreateInputDTO } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
   companyFindByIdUsers,
@@ -9,6 +8,7 @@ import {
 } from '../../../../store/slices'
 import { Component } from './component'
 import { useCallback, useEffect } from 'react'
+import { UserCreateInput } from '../../../../../service'
 
 export const UserCreate = () => {
   const params = useParams()
@@ -24,7 +24,7 @@ export const UserCreate = () => {
     handleRoleFindAll()
   }, [])
 
-  const handleUserCreate = async (input: UserCreateInputDTO): Promise<void> => {
+  const handleUserCreate = async (input: UserCreateInput): Promise<void> => {
     await dispatch(userCreate(input))
     await dispatch(companyFindByIdUsers(params.id || ''))
   }

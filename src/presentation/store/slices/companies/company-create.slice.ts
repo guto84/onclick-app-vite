@@ -1,8 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {
-  CompanyCreateInputDTO,
-  CompanyCreateService,
-} from '../../../../service'
+import { CompanyCreateInput, CompanyCreateService } from '../../../../service'
 import { toastSuccess } from '../../../view/utils'
 
 export type CompanyCreateState = {
@@ -17,7 +14,7 @@ export const companyCreateInitialState: CompanyCreateState = {
 
 export const companyCreate = createAsyncThunk(
   'companies/create',
-  async (input: CompanyCreateInputDTO) => {
+  async (input: CompanyCreateInput) => {
     const service = new CompanyCreateService()
     await service.execute(input)
   },

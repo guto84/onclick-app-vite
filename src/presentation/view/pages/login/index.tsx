@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { LoginComponent } from './component'
-import { InputLoginDTO, LoginService } from '../../../../service'
+import { LoginInput, LoginService } from '../../../../service'
 import { toast } from 'react-toastify'
 
 export const Login = () => {
   const navigate = useNavigate()
 
-  const handleLogin = async (body: InputLoginDTO): Promise<void> => {
+  const handleLogin = async (body: LoginInput): Promise<void> => {
     try {
       const service = new LoginService()
       const response = await service.execute(body)

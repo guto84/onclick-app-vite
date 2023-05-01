@@ -11,15 +11,14 @@ import {
   TextField,
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import * as S from '../styles'
-import { CompanyCreateInputDTO } from '../../../../../service'
-import { Loading } from '../../../components'
+import { CompanyCreateInput } from '../../../../../service'
+import { Loading, ModalCard } from '../../../components'
 
 type Props = {
   open: boolean
   loading: boolean
   handleOpen: (open: boolean) => void
-  handleCompanyCreate: (input: CompanyCreateInputDTO) => Promise<void>
+  handleCompanyCreate: (input: CompanyCreateInput) => Promise<void>
 }
 
 export const Component = ({
@@ -56,7 +55,7 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <S.ModalCard>
+        <ModalCard>
           <Card>
             <CardHeader
               title=""
@@ -115,7 +114,7 @@ export const Component = ({
               </form>
             </CardContent>
           </Card>
-        </S.ModalCard>
+        </ModalCard>
       </Modal>
 
       <Loading loading={loading} />

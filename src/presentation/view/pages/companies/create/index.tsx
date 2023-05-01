@@ -1,4 +1,4 @@
-import { CompanyCreateInputDTO } from '../../../../../service'
+import { CompanyCreateInput } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
   companyCreate,
@@ -12,7 +12,7 @@ export const CompanyCreate = () => {
   const selector = useAppSelector((state) => state.companyCreate)
 
   const handleCompanyCreate = async (
-    input: CompanyCreateInputDTO,
+    input: CompanyCreateInput,
   ): Promise<void> => {
     await dispatch(companyCreate(input))
     await dispatch(companyFindAll())

@@ -3,11 +3,11 @@ import * as Yup from 'yup'
 import { Button, Grid, Paper, TextField, Typography } from '@mui/material'
 
 import { Content, LoginForm } from './styles'
-import { InputLoginDTO } from '../../../../service'
+import { LoginInput } from '../../../../service'
 import { Loading, Toast } from '../../components'
 
 type Props = {
-  handleLogin: (body: InputLoginDTO) => Promise<void>
+  handleLogin: (body: LoginInput) => Promise<void>
 }
 
 export const LoginComponent = ({ handleLogin }: Props) => {

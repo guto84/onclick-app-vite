@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -17,21 +18,16 @@ import {
   TextField,
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import { Loading } from '../../../components'
-import * as S from '../styles'
-import {
-  RoleFindAllOutputDTO,
-  UserCreateInputDTO,
-} from '../../../../../service'
-import { useParams } from 'react-router-dom'
+import { RoleOutput, UserCreateInput } from '../../../../../service'
+import { Loading, ModalCard } from '../../../components'
 
 type Props = {
   open: boolean
   loading: boolean
-  roleList: RoleFindAllOutputDTO
+  roleList: RoleOutput[]
   roleLoading: boolean
   handleOpen: (open: boolean) => void
-  handleUserCreate: (input: UserCreateInputDTO) => Promise<void>
+  handleUserCreate: (input: UserCreateInput) => Promise<void>
 }
 
 export const Component = ({
@@ -93,7 +89,7 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <S.ModalCard>
+        <ModalCard>
           <Card>
             <CardHeader
               title=""
@@ -215,7 +211,7 @@ export const Component = ({
               </form>
             </CardContent>
           </Card>
-        </S.ModalCard>
+        </ModalCard>
       </Modal>
 
       <Loading loading={loading} />

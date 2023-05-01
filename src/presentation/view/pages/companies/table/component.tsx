@@ -18,11 +18,11 @@ import {
   PersonAdd as PersonAddIcon,
 } from '@mui/icons-material'
 import { Loading, TemplateAdmin, Toast } from '../../../components'
-import { CompanyFindAllOutputDTO } from '../../../../../service'
 import { Link } from 'react-router-dom'
+import { CompanyOutput } from '../../../../../service'
 
 type Props = {
-  list: CompanyFindAllOutputDTO
+  list: CompanyOutput[]
   loading: boolean
   handleCreateModal: (open: boolean) => void
   handleUpdateModal: (id: string) => void
