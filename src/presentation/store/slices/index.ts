@@ -14,3 +14,7 @@ export * from './groups/group-create.slice'
 export * from './groups/group-delete.slice'
 export * from './groups/group-find-all.slice'
 export * from './groups/group-update.slice'
+
+export * from './categories/category-create.slice'
+export * from './categories/category-delete.slice'
+export * from './categories/category-update.slice'

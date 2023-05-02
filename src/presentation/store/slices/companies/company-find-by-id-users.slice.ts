@@ -21,7 +21,7 @@ export const companyFindByIdUsersInitialState: CompanyFindByIdUsersState = {
 }
 
 export const companyFindByIdUsers = createAsyncThunk(
-  'users/findByIdUsers',
+  'companies/findByIdUsers',
   async (id: string) => {
     const service = new CompanyFindByIdUsersService()
     const response = await service.execute(id)

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { CompanyCreateInput, CompanyCreateService } from '../../../../service'
-import { toastSuccess } from '../../../view/utils'
+import { toastError, toastSuccess } from '../../../view/utils'
 
 export type CompanyCreateState = {
   modal: boolean
@@ -41,10 +41,9 @@ export const CompanyCreateSlice = createSlice({
         state.loading = false
         toastSuccess('Cadastrado com sucesso!')
       })
-      .addCase(companyCreate.rejected, (state, payload) => {
+      .addCase(companyCreate.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao cadastrar, tente novamente!')
       })
   },
 })

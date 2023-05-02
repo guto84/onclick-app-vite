@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { toastSuccess } from '../../../view/utils'
+import { toastError, toastSuccess } from '../../../view/utils'
 import { UserCreateInput, UserCreateService } from '../../../../service'
 
 export type UserCreateState = {
@@ -41,10 +41,9 @@ export const UserCreateSlice = createSlice({
         state.loading = false
         toastSuccess('Cadastrado com sucesso!')
       })
-      .addCase(userCreate.rejected, (state, payload) => {
+      .addCase(userCreate.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao cadastrar, tente novamente!')
       })
   },
 })

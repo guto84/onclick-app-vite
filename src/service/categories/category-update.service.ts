@@ -1,15 +1,15 @@
-import { GroupCreateInput } from '..'
+import { CategoryUpdateInput } from '..'
 import {
   HttpRequest,
   envAdapter,
   httpClientAdapter,
 } from '../../infra/adapters'
 
-export class GroupCreateService {
-  async execute(input: GroupCreateInput): Promise<void> {
+export class CategoryUpdateService {
+  async execute(id: string, input: CategoryUpdateInput): Promise<void> {
     const httpRequest: HttpRequest = {
-      url: `${envAdapter.apiUrl}/groups`,
-      method: 'post',
+      url: `${envAdapter.apiUrl}/categories/${id}`,
+      method: 'put',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,

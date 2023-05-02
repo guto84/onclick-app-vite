@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { GroupDeleteService } from '../../../../service'
-import { toastSuccess } from '../../../view/utils'
+import { toastError, toastSuccess } from '../../../view/utils'
 
 export type GroupDeleteState = {
   modal: boolean
@@ -15,7 +15,7 @@ export const groupDeleteInitialState: GroupDeleteState = {
 }
 
 export const groupDelete = createAsyncThunk(
-  'companies/delete',
+  'groups/delete',
   async (id: string) => {
     const service = new GroupDeleteService()
     await service.execute(id)
@@ -46,10 +46,9 @@ export const GroupDeleteSlice = createSlice({
         state.loading = false
         toastSuccess('Excluido com sucesso!')
       })
-      .addCase(groupDelete.rejected, (state, payload) => {
+      .addCase(groupDelete.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao excluir, tente novamente!')
       })
   },
 })

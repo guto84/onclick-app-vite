@@ -77,10 +77,9 @@ export const GroupUpdateSlice = createSlice({
         state.loading = false
         toastSuccess('Editado com sucesso!')
       })
-      .addCase(groupUpdate.rejected, (state, payload) => {
+      .addCase(groupUpdate.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao editar, tente novamente!')
       })
   },
 })

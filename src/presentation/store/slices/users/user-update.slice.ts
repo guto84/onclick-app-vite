@@ -79,10 +79,9 @@ export const UserUpdateSlice = createSlice({
         state.loading = false
         toastSuccess('Editado com sucesso!')
       })
-      .addCase(userUpdate.rejected, (state, payload) => {
+      .addCase(userUpdate.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao editar, tente novamente!')
       })
   },
 })

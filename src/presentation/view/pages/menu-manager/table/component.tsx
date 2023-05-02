@@ -31,6 +31,9 @@ type Props = {
   handleGroupCreateModal: (open: boolean) => void
   handleGroupDeleteModal: (id: string) => void
   handleGroupUpdateModal: (id: string) => void
+  handleCategoryCreateModal: (open: boolean, id: string) => void
+  handleCategoryDeleteModal: (id: string) => void
+  handleCategoryUpdateModal: (id: string) => void
 }
 
 export const Component = ({
@@ -39,6 +42,9 @@ export const Component = ({
   handleGroupCreateModal,
   handleGroupDeleteModal,
   handleGroupUpdateModal,
+  handleCategoryCreateModal,
+  handleCategoryDeleteModal,
+  handleCategoryUpdateModal,
 }: Props) => {
   return (
     <>
@@ -84,11 +90,15 @@ export const Component = ({
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Cadastrar Categoria">
-                      <Link to={`/`}>
-                        <IconButton color="success" component="button">
-                          <PlaylistAddIcon />
-                        </IconButton>
-                      </Link>
+                      <IconButton
+                        onClick={() =>
+                          handleCategoryCreateModal(true, group.id)
+                        }
+                        color="success"
+                        component="button"
+                      >
+                        <PlaylistAddIcon />
+                      </IconButton>
                     </Tooltip>
                   </ButtonGroup>
                 </S.GroupItem>
@@ -107,12 +117,24 @@ export const Component = ({
                         </Typography>
                         <ButtonGroup>
                           <Tooltip title="Editar">
-                            <IconButton color="primary" component="button">
+                            <IconButton
+                              onClick={() =>
+                                handleCategoryUpdateModal(category.id)
+                              }
+                              color="primary"
+                              component="button"
+                            >
                               <EditIcon />
                             </IconButton>
                           </Tooltip>
                           <Tooltip title="Excluir">
-                            <IconButton color="error" component="button">
+                            <IconButton
+                              onClick={() =>
+                                handleCategoryDeleteModal(category.id)
+                              }
+                              color="error"
+                              component="button"
+                            >
                               <DeleteForeverIcon />
                             </IconButton>
                           </Tooltip>

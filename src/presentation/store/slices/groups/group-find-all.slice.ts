@@ -8,11 +8,13 @@ import {
 export type GroupFindAllState = {
   loading: boolean
   list: GroupCategoriesProductsOutput[]
+  groupId: string
 }
 
 export const groupFindAllInitialState: GroupFindAllState = {
   loading: true,
   list: [],
+  groupId: '',
 }
 
 export const groupFindAll = createAsyncThunk('groups/findAll', async () => {
@@ -22,7 +24,7 @@ export const groupFindAll = createAsyncThunk('groups/findAll', async () => {
 })
 
 export const GroupFindAllSlice = createSlice({
-  name: 'GroupFindAllSlice',
+  name: 'groups/FindAllSlice',
   initialState: groupFindAllInitialState,
   reducers: {
     setGroupList: (
@@ -33,6 +35,9 @@ export const GroupFindAllSlice = createSlice({
     },
     setGroupListLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload
+    },
+    setGroupId: (state, action: PayloadAction<string>) => {
+      state.groupId = action.payload
     },
   },
   extraReducers(builder) {
@@ -51,6 +56,7 @@ export const GroupFindAllSlice = createSlice({
   },
 })
 
-export const { setGroupList, setGroupListLoading } = GroupFindAllSlice.actions
+export const { setGroupList, setGroupListLoading, setGroupId } =
+  GroupFindAllSlice.actions
 
 export default GroupFindAllSlice.reducer

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { CompanyDeleteService } from '../../../../service'
-import { toastSuccess } from '../../../view/utils'
+import { toastError, toastSuccess } from '../../../view/utils'
 
 export type CompanyDeleteState = {
   modal: boolean
@@ -46,10 +46,9 @@ export const CompanyDeleteSlice = createSlice({
         state.loading = false
         toastSuccess('Excluido com sucesso!')
       })
-      .addCase(companyDelete.rejected, (state, payload) => {
+      .addCase(companyDelete.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao excluir, tente novamente!')
       })
   },
 })

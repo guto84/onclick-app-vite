@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { toastSuccess } from '../../../view/utils'
+import { toastError, toastSuccess } from '../../../view/utils'
 import { GroupCreateInput, GroupCreateService } from '../../../../service'
 
 export type GroupCreateState = {
@@ -13,7 +13,7 @@ export const groupCreateInitialState: GroupCreateState = {
 }
 
 export const groupCreate = createAsyncThunk(
-  'companies/create',
+  'groups/create',
   async (input: GroupCreateInput) => {
     const service = new GroupCreateService()
     await service.execute(input)
@@ -41,10 +41,9 @@ export const GroupCreateSlice = createSlice({
         state.loading = false
         toastSuccess('Cadastrado com sucesso!')
       })
-      .addCase(groupCreate.rejected, (state, payload) => {
+      .addCase(groupCreate.rejected, (state) => {
         state.loading = false
-        console.log(payload)
-        // payload.response.data.message.map((item: string) => toastError(item))
+        toastError('Erro ao cadastrar, tente novamente!')
       })
   },
 })
