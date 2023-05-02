@@ -19,6 +19,9 @@ export const categoryUpdateInitialState: CategoryUpdateState = {
   values: {
     id: '',
     name: '',
+    group: {
+      id: '',
+    },
   },
 }
 

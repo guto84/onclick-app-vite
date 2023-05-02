@@ -12,33 +12,40 @@ import {
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { Loading, ModalCard } from '../../../components'
-import { CategoryOutput, CategoryUpdateInput } from '../../../../../service'
+import { ProductCreateInput } from '../../../../../service'
 
 type Props = {
   open: boolean
   loading: boolean
-  values: CategoryOutput
+  categoryId: string
   handleOpen: (open: boolean) => void
-  handleUpdate: (id: string, input: CategoryUpdateInput) => Promise<void>
+  handleCreate: (input: ProductCreateInput) => Promise<void>
 }
 
 export const Component = ({
   open,
   loading,
-  values,
+  categoryId,
   handleOpen,
-  handleUpdate,
+  handleCreate,
 }: Props) => {
-  const initialValues = { name: values.name, group: { id: values.group.id } }
+  const initialValues = {
+    name: '',
+    description: null,
+    price: null,
+    category: { id: categoryId },
+  }
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),
+    description: Yup.string().nullable(),
+    price: Yup.number().nullable(),
   })
 
   const form = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (input) => {
-      await handleUpdate(values.id, input)
+    onSubmit: async (values) => {
+      await handleCreate(values)
       handleCloseModal()
     },
     enableReinitialize: true,
@@ -46,6 +53,7 @@ export const Component = ({
 
   const handleCloseModal = () => {
     handleOpen(false)
+    form.handleReset(initialValues)
   }
 
   return (
@@ -92,8 +100,35 @@ export const Component = ({
                     />
                   </Grid>
                   <Grid item xs={12}>
+                    <TextField
+                      label="Descrição"
+                      variant="standard"
+                      fullWidth
+                      name="description"
+                      value={form.values.description}
+                      onChange={form.handleChange}
+                      error={
+                        !!(form.touched.description && form.errors.description)
+                      }
+                      helperText={form.errors.description}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      type="number"
+                      label="Preço"
+                      variant="standard"
+                      fullWidth
+                      name="price"
+                      value={form.values.price}
+                      onChange={form.handleChange}
+                      error={!!(form.touched.price && form.errors.price)}
+                      helperText={form.errors.price}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
                     <Button type="submit" variant="contained" fullWidth>
-                      Salvar
+                      Cadastrar
                     </Button>
                   </Grid>
                 </Grid>

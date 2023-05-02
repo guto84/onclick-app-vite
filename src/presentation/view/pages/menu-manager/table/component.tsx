@@ -20,6 +20,7 @@ import {
   Edit as EditIcon,
   PlaylistAdd as PlaylistAddIcon,
   PostAdd as PostAddIcon,
+  Fastfood as FastfoodIcon,
 } from '@mui/icons-material'
 import { Loading, TemplateAdmin, Toast } from '../../../components'
 import * as S from './styles'
@@ -34,6 +35,9 @@ type Props = {
   handleCategoryCreateModal: (open: boolean, id: string) => void
   handleCategoryDeleteModal: (id: string) => void
   handleCategoryUpdateModal: (id: string) => void
+  handleProductCreateModal: (open: boolean, id: string) => void
+  handleProductUpdateModal: (id: string) => void
+  handleProductDeleteModal: (id: string) => void
 }
 
 export const Component = ({
@@ -45,6 +49,9 @@ export const Component = ({
   handleCategoryCreateModal,
   handleCategoryDeleteModal,
   handleCategoryUpdateModal,
+  handleProductCreateModal,
+  handleProductUpdateModal,
+  handleProductDeleteModal,
 }: Props) => {
   return (
     <>
@@ -139,11 +146,15 @@ export const Component = ({
                             </IconButton>
                           </Tooltip>
                           <Tooltip title="Cadastrar Produto">
-                            <Link to={`/`}>
-                              <IconButton color="success" component="button">
-                                <PlaylistAddIcon />
-                              </IconButton>
-                            </Link>
+                            <IconButton
+                              onClick={() =>
+                                handleProductCreateModal(true, category.id)
+                              }
+                              color="success"
+                              component="button"
+                            >
+                              <FastfoodIcon />
+                            </IconButton>
                           </Tooltip>
                           <Tooltip title="Configurações">
                             <Link to={`/`}>
@@ -176,12 +187,24 @@ export const Component = ({
                           <TableCell align="center">
                             <ButtonGroup>
                               <Tooltip title="Editar">
-                                <IconButton color="primary" component="button">
+                                <IconButton
+                                  onClick={() =>
+                                    handleProductUpdateModal(product.id)
+                                  }
+                                  color="primary"
+                                  component="button"
+                                >
                                   <EditIcon />
                                 </IconButton>
                               </Tooltip>
                               <Tooltip title="Excluir">
-                                <IconButton color="error" component="button">
+                                <IconButton
+                                  onClick={() =>
+                                    handleProductDeleteModal(product.id)
+                                  }
+                                  color="error"
+                                  component="button"
+                                >
                                   <DeleteForeverIcon />
                                 </IconButton>
                               </Tooltip>

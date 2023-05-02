@@ -5,15 +5,21 @@ import {
   categoryFindById,
   groupFindAll,
   groupFindById,
+  productFindById,
   setCategoryCreateModal,
   setCategoryDeleteId,
   setCategoryDeleteModal,
+  setCategoryId,
   setCategoryUpdateModal,
   setGroupCreateModal,
   setGroupDeleteId,
   setGroupDeleteModal,
   setGroupId,
   setGroupUpdateModal,
+  setProductCreateModal,
+  setProductDeleteId,
+  setProductDeleteModal,
+  setProductUpdateModal,
 } from '../../../../store/slices'
 
 export const MenuManagerTable = () => {
@@ -57,6 +63,21 @@ export const MenuManagerTable = () => {
     dispatch(setCategoryDeleteId(id))
   }
 
+  const handleProductCreateModal = (open: boolean, id: string) => {
+    dispatch(setCategoryId(id))
+    dispatch(setProductCreateModal(open))
+  }
+
+  const handleProductUpdateModal = (id: string) => {
+    dispatch(setProductUpdateModal(true))
+    dispatch(productFindById(id))
+  }
+
+  const handleProductDeleteModal = (id: string) => {
+    dispatch(setProductDeleteModal(true))
+    dispatch(setProductDeleteId(id))
+  }
+
   return (
     <Component
       list={selector.list}
@@ -67,6 +88,9 @@ export const MenuManagerTable = () => {
       handleCategoryCreateModal={handleCategoryCreateModal}
       handleCategoryDeleteModal={handleCategoryDeleteModal}
       handleCategoryUpdateModal={handleCategoryUpdateModal}
+      handleProductCreateModal={handleProductCreateModal}
+      handleProductUpdateModal={handleProductUpdateModal}
+      handleProductDeleteModal={handleProductDeleteModal}
     />
   )
 }

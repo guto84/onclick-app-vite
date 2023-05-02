@@ -18,3 +18,7 @@ export * from './groups/group-update.slice'
 export * from './categories/category-create.slice'
 export * from './categories/category-delete.slice'
 export * from './categories/category-update.slice'
+
+export * from './products/product-create.slice'
+export * from './products/product-delete.slice'
+export * from './products/product-update.slice'

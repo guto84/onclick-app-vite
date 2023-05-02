@@ -19,6 +19,10 @@ import categoryCreateReducer from '../store/slices/categories/category-create.sl
 import categoryDeleteReducer from '../store/slices/categories/category-delete.slice'
 import categoryUpdateReducer from '../store/slices/categories/category-update.slice'
 
+import productCreateReducer from '../store/slices/products/product-create.slice'
+import productDeleteReducer from '../store/slices/products/product-delete.slice'
+import productUpdateReducer from '../store/slices/products/product-update.slice'
+
 export const reducers = {
   companyCreate: companyCreateReducer,
   companyFindAll: companyFindAllReducer,
@@ -40,4 +44,8 @@ export const reducers = {
   categoryCreate: categoryCreateReducer,
   categoryDelete: categoryDeleteReducer,
   categoryUpdate: categoryUpdateReducer,
+
+  productCreate: productCreateReducer,
+  productDelete: productDeleteReducer,
+  productUpdate: productUpdateReducer,
 }
