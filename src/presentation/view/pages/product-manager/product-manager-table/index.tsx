@@ -22,7 +22,7 @@ import {
   setProductUpdateModal,
 } from '../../../../store/slices'
 
-export const MenuManagerTable = () => {
+export const ProductManagerTable = () => {
   const dispatch = useAppDispatch()
   const selector = useAppSelector((state) => state.groupFindAll)
 

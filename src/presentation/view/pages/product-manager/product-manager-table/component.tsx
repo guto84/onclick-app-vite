@@ -167,12 +167,13 @@ export const Component = ({
                       </S.CategoryItem>
                     </li>
                   </ul>
+                  <Divider />
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell>NOME</TableCell>
+                        <TableCell width={450}>NOME</TableCell>
                         <TableCell>DESCRIÇÃO</TableCell>
-                        <TableCell>PREÇO</TableCell>
+                        <TableCell width={120}>PREÇO</TableCell>
                         <TableCell align="center" width={100}>
                           AÇÕES
                         </TableCell>
@@ -183,7 +184,12 @@ export const Component = ({
                         <TableRow key={product.id}>
                           <TableCell>{product.name}</TableCell>
                           <TableCell>{product.description}</TableCell>
-                          <TableCell>{product.price}</TableCell>
+                          <TableCell>
+                            {new Intl.NumberFormat('pt-BR', {
+                              style: 'currency',
+                              currency: 'BRL',
+                            }).format(product.price)}
+                          </TableCell>
                           <TableCell align="center">
                             <ButtonGroup>
                               <Tooltip title="Editar">
