@@ -14,12 +14,12 @@ export const CompanyTable = () => {
   const dispatch = useAppDispatch()
   const selector = useAppSelector((state) => state.companyFindAll)
 
-  useEffect(() => {
-    handleCompanyFindAll()
-  }, [])
-
   const handleCompanyFindAll = useCallback(async () => {
     await dispatch(companyFindAll())
+  }, [])
+
+  useEffect(() => {
+    handleCompanyFindAll()
   }, [])
 
   const handleCompanyCreateModal = (open: boolean) => {

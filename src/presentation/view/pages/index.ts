@@ -1,4 +1,5 @@
 export * from './companies'
 export * from './company-users'
+export * from './config-manager'
 export * from './login'
-export * from './product-manager'
+export * from './menu-manager'

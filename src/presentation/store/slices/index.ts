@@ -18,7 +18,12 @@ export * from './groups/group-update.slice'
 export * from './categories/category-create.slice'
 export * from './categories/category-delete.slice'
 export * from './categories/category-update.slice'
+export * from './categories/category-find-by-id-configs-items.slice'
 
 export * from './products/product-create.slice'
 export * from './products/product-delete.slice'
 export * from './products/product-update.slice'
+
+export * from './configurations/configuration-create.slice'
+export * from './configurations/configuration-delete.slice'
+export * from './configurations/configuration-update.slice'

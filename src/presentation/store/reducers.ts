@@ -17,11 +17,16 @@ import groupUpdateReducer from '../store/slices/groups/group-update.slice'
 
 import categoryCreateReducer from '../store/slices/categories/category-create.slice'
 import categoryDeleteReducer from '../store/slices/categories/category-delete.slice'
+import categoryFindByIdConfigsItemsReducer from '../store/slices/categories/category-find-by-id-configs-items.slice'
 import categoryUpdateReducer from '../store/slices/categories/category-update.slice'
 
 import productCreateReducer from '../store/slices/products/product-create.slice'
 import productDeleteReducer from '../store/slices/products/product-delete.slice'
 import productUpdateReducer from '../store/slices/products/product-update.slice'
+
+import configurationCreateReducer from '../store/slices/configurations/configuration-create.slice'
+import configurationDeleteReducer from '../store/slices/configurations/configuration-delete.slice'
+import configurationUpdateReducer from '../store/slices/configurations/configuration-update.slice'
 
 export const reducers = {
   companyCreate: companyCreateReducer,
@@ -44,8 +49,13 @@ export const reducers = {
   categoryCreate: categoryCreateReducer,
   categoryDelete: categoryDeleteReducer,
   categoryUpdate: categoryUpdateReducer,
+  categoryFindByIdConfigsItems: categoryFindByIdConfigsItemsReducer,
 
   productCreate: productCreateReducer,
   productDelete: productDeleteReducer,
   productUpdate: productUpdateReducer,
+
+  configurationCreate: configurationCreateReducer,
+  configurationDelete: configurationDeleteReducer,
+  configurationUpdate: configurationUpdateReducer,
 }

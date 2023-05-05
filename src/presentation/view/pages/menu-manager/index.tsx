@@ -7,12 +7,12 @@ import { GroupUpdate } from './group-update'
 import { ProductCreate } from './product-create'
 import { ProductDelete } from './product-delete'
 import { ProductUpdate } from './product-update'
-import { ProductManagerTable } from './product-manager-table'
+import { MenuManagerTable } from './menu-manager-table'
 
-export const ProductManager = () => {
+export const MenuManager = () => {
   return (
     <>
-      <ProductManagerTable />
+      <MenuManagerTable />
       <GroupCreate />
       <GroupUpdate />
       <GroupDelete />

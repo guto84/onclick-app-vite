@@ -3,12 +3,12 @@ import {
   envAdapter,
   httpClientAdapter,
 } from '../../infra/adapters'
-import { ProductOutput } from './types'
+import { ConfigurationOutput } from './types'
 
-export class ProductFindByIdService {
-  async execute(id: string): Promise<ProductOutput> {
+export class ConfigurationFindByIdService {
+  async execute(id: string): Promise<ConfigurationOutput> {
     const httpRequest: HttpRequest = {
-      url: `${envAdapter.apiUrl}/products/${id}`,
+      url: `${envAdapter.apiUrl}/configurations/${id}`,
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -22,8 +22,8 @@ export class ProductFindByIdService {
     return {
       id: data.id,
       name: data.name,
-      description: data.description,
-      price: data.price,
+      min: data.min,
+      max: data.max,
       category: {
         id: data.category.id,
       },

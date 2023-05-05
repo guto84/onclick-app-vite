@@ -1,5 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Companies, CompanyUsers, Login, ProductManager } from '../view/pages'
+import {
+  Companies,
+  CompanyUsers,
+  Login,
+  MenuManager,
+  ConfigManager,
+} from '../view/pages'
 
 const RoutesRoot = () => {
   return (
@@ -8,7 +14,11 @@ const RoutesRoot = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/empresas" element={<Companies />} />
         <Route path="/empresas/:id/usuarios" element={<CompanyUsers />} />
-        <Route path="/produtos" element={<ProductManager />} />
+        <Route path="/cardapios" element={<MenuManager />} />
+        <Route
+          path="/cardapios/categorias/:id/configuracoes"
+          element={<ConfigManager />}
+        />
       </Routes>
     </BrowserRouter>
   )

@@ -21,8 +21,9 @@ import {
   setProductDeleteModal,
   setProductUpdateModal,
 } from '../../../../store/slices'
+import { Loading, Toast } from '../../../components'
 
-export const ProductManagerTable = () => {
+export const MenuManagerTable = () => {
   const dispatch = useAppDispatch()
   const selector = useAppSelector((state) => state.groupFindAll)
 
@@ -79,18 +80,21 @@ export const ProductManagerTable = () => {
   }
 
   return (
-    <Component
-      list={selector.list}
-      loading={selector.loading}
-      handleGroupCreateModal={handleGroupCreateModal}
-      handleGroupDeleteModal={handleGroupDeleteModal}
-      handleGroupUpdateModal={handleGroupUpdateModal}
-      handleCategoryCreateModal={handleCategoryCreateModal}
-      handleCategoryDeleteModal={handleCategoryDeleteModal}
-      handleCategoryUpdateModal={handleCategoryUpdateModal}
-      handleProductCreateModal={handleProductCreateModal}
-      handleProductUpdateModal={handleProductUpdateModal}
-      handleProductDeleteModal={handleProductDeleteModal}
-    />
+    <>
+      <Component
+        list={selector.list}
+        handleGroupCreateModal={handleGroupCreateModal}
+        handleGroupDeleteModal={handleGroupDeleteModal}
+        handleGroupUpdateModal={handleGroupUpdateModal}
+        handleCategoryCreateModal={handleCategoryCreateModal}
+        handleCategoryDeleteModal={handleCategoryDeleteModal}
+        handleCategoryUpdateModal={handleCategoryUpdateModal}
+        handleProductCreateModal={handleProductCreateModal}
+        handleProductUpdateModal={handleProductUpdateModal}
+        handleProductDeleteModal={handleProductDeleteModal}
+      />
+      <Loading loading={selector.loading} />
+      <Toast />
+    </>
   )
 }
