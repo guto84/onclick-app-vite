@@ -19,7 +19,6 @@ export const configurationUpdateInitialState: ConfigurationUpdateState = {
   values: {
     id: '',
     name: '',
-    required: false,
     min: 0,
     max: 0,
     category: {

@@ -12,14 +12,20 @@ import {
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { Loading, ModalCard } from '../../../components'
-import { ProductOutput, ProductUpdateInput } from '../../../../../service'
+import {
+  ConfigurationItemOutput,
+  ConfigurationItemUpdateInput,
+} from '../../../../../service'
 
 type Props = {
   open: boolean
   loading: boolean
-  values: ProductOutput
+  values: ConfigurationItemOutput
   handleOpen: (open: boolean) => void
-  handleUpdate: (id: string, input: ProductUpdateInput) => Promise<void>
+  handleUpdate: (
+    id: string,
+    input: ConfigurationItemUpdateInput,
+  ) => Promise<void>
 }
 
 export const Component = ({
@@ -33,7 +39,7 @@ export const Component = ({
     name: values.name,
     description: values.description,
     price: values.price,
-    category: { id: values.category.id },
+    configuration: { id: values.configuration.id },
   }
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),

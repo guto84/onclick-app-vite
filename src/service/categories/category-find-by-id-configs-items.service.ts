@@ -25,12 +25,12 @@ export class CategoryFindByIdConfigsItemsService {
       configurations: data.configurations.map((config: Config) => ({
         id: config.id,
         name: config.name,
-        required: config.required,
         min: config.min,
         max: config.max,
         configurationItems: config.configurationItems.map((item) => ({
           id: item.id,
           name: item.name,
+          description: item.description,
           price: item.price,
         })),
       })),

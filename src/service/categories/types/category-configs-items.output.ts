@@ -7,7 +7,6 @@ export type CategoryConfigsItemsOutput = {
 export type Config = {
   id: string
   name: string
-  required: boolean
   min: number
   max: number
   configurationItems: Type[]
@@ -16,5 +15,6 @@ export type Config = {
 export type Type = {
   id: string
   name: string
+  description: string
   price: number
 }

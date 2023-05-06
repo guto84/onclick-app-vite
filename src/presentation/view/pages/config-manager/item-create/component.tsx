@@ -12,20 +12,20 @@ import {
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { Loading, ModalCard } from '../../../components'
-import { ProductCreateInput } from '../../../../../service'
+import { ConfigurationItemCreateInput } from '../../../../../service'
 
 type Props = {
   open: boolean
   loading: boolean
-  categoryId: string
+  configId: string
   handleOpen: (open: boolean) => void
-  handleCreate: (input: ProductCreateInput) => Promise<void>
+  handleCreate: (input: ConfigurationItemCreateInput) => Promise<void>
 }
 
 export const Component = ({
   open,
   loading,
-  categoryId,
+  configId,
   handleOpen,
   handleCreate,
 }: Props) => {
@@ -33,7 +33,7 @@ export const Component = ({
     name: '',
     description: null,
     price: null,
-    category: { id: categoryId },
+    configuration: { id: configId },
   }
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),

@@ -27,3 +27,7 @@ export * from './products/product-update.slice'
 export * from './configurations/configuration-create.slice'
 export * from './configurations/configuration-delete.slice'
 export * from './configurations/configuration-update.slice'
+
+export * from './configuration-items/configuration-item-create.slice'
+export * from './configuration-items/configuration-item-delete.slice'
+export * from './configuration-items/configuration-item-update.slice'

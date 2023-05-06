@@ -1,26 +1,30 @@
-import { ProductCreateInput } from '../../../../../service'
+import { useParams } from 'react-router-dom'
+import { ConfigurationItemCreateInput } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
-  groupFindAll,
-  productCreate,
-  setProductCreateModal,
+  configurationItemCreate,
+  setConfigurationItemCreateModal,
+  categoryFindByIdConfigsItems,
 } from '../../../../store/slices'
 import { Component } from './component'
 
 export const ItemCreate = () => {
+  const params = useParams()
   const dispatch = useAppDispatch()
-  const selector = useAppSelector((state) => state.productCreate)
-  const selectorGroup = useAppSelector((state) => state.groupFindAll)
+  const selector = useAppSelector((state) => state.configurationItemCreate)
+  const selectorCategory = useAppSelector(
+    (state) => state.categoryFindByIdConfigsItems,
+  )
 
-  const handleProductCreate = async (
-    input: ProductCreateInput,
+  const handleConfigurationItemCreate = async (
+    input: ConfigurationItemCreateInput,
   ): Promise<void> => {
-    await dispatch(productCreate(input))
-    await dispatch(groupFindAll())
+    await dispatch(configurationItemCreate(input))
+    await dispatch(categoryFindByIdConfigsItems(params.id || ''))
   }
 
-  const handleProductCreateModal = (open: boolean) => {
-    dispatch(setProductCreateModal(open))
+  const handleConfigurationItemCreateModal = (open: boolean) => {
+    dispatch(setConfigurationItemCreateModal(open))
   }
 
   return (
@@ -28,9 +32,9 @@ export const ItemCreate = () => {
       <Component
         open={selector.modal}
         loading={selector.loading}
-        handleOpen={handleProductCreateModal}
-        handleCreate={handleProductCreate}
-        categoryId={selectorGroup.categoryId}
+        handleOpen={handleConfigurationItemCreateModal}
+        handleCreate={handleConfigurationItemCreate}
+        configId={selectorCategory.configId}
       />
     </>
   )

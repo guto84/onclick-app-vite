@@ -1,26 +1,28 @@
-import { ProductUpdateInput } from '../../../../../service'
+import { useParams } from 'react-router-dom'
+import { ConfigurationItemUpdateInput } from '../../../../../service'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
-  groupFindAll,
-  productUpdate,
-  setProductUpdateModal,
+  categoryFindByIdConfigsItems,
+  configurationItemUpdate,
+  setConfigurationItemUpdateModal,
 } from '../../../../store/slices'
 import { Component } from './component'
 
 export const ItemUpdate = () => {
+  const params = useParams()
   const dispatch = useAppDispatch()
-  const selector = useAppSelector((state) => state.productUpdate)
+  const selector = useAppSelector((state) => state.configurationItemUpdate)
 
-  const handleProductUpdate = async (
+  const handleConfigItemUpdate = async (
     id: string,
-    input: ProductUpdateInput,
+    input: ConfigurationItemUpdateInput,
   ): Promise<void> => {
-    await dispatch(productUpdate({ id, input }))
-    await dispatch(groupFindAll())
+    await dispatch(configurationItemUpdate({ id, input }))
+    await dispatch(categoryFindByIdConfigsItems(params.id || ''))
   }
 
-  const handleProductUpdateModal = (open: boolean) => {
-    dispatch(setProductUpdateModal(open))
+  const handleConfigItemUpdateModal = (open: boolean) => {
+    dispatch(setConfigurationItemUpdateModal(open))
   }
 
   return (
@@ -29,8 +31,8 @@ export const ItemUpdate = () => {
         open={selector.modal}
         loading={selector.loading}
         values={selector.values}
-        handleOpen={handleProductUpdateModal}
-        handleUpdate={handleProductUpdate}
+        handleOpen={handleConfigItemUpdateModal}
+        handleUpdate={handleConfigItemUpdate}
       />
     </>
   )

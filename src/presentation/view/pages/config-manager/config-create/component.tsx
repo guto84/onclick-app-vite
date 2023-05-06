@@ -31,7 +31,6 @@ export const Component = ({
 }: Props) => {
   const initialValues = {
     name: '',
-    required: false,
     min: 0,
     max: 0,
     category: { id: categoryId },

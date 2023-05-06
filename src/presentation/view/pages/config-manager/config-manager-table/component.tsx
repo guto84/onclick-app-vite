@@ -30,18 +30,18 @@ type Props = {
   handleConfigCreateModal: (open: boolean) => void
   handleConfigDeleteModal: (id: string) => void
   handleConfigUpdateModal: (id: string) => void
-  handleCategoryCreateModal: (open: boolean, id: string) => void
-  handleProductUpdateModal: (id: string) => void
-  handleProductDeleteModal: (id: string) => void
+  handleConfigItemCreateModal: (open: boolean, id: string) => void
+  handleConfigItemUpdateModal: (id: string) => void
+  handleConfigItemDeleteModal: (id: string) => void
 }
 
 const Row = ({
   config,
   handleConfigDeleteModal,
   handleConfigUpdateModal,
-  handleCategoryCreateModal,
-  handleProductUpdateModal,
-  handleProductDeleteModal,
+  handleConfigItemCreateModal,
+  handleConfigItemUpdateModal,
+  handleConfigItemDeleteModal,
 }: any) => {
   const [open, setOpen] = useState(false)
   return (
@@ -87,7 +87,7 @@ const Row = ({
             </Tooltip>
             <Tooltip title="Cadastrar Item">
               <IconButton
-                onClick={() => handleCategoryCreateModal(true, config.id)}
+                onClick={() => handleConfigItemCreateModal(true, config.id)}
                 color="success"
                 component="button"
               >
@@ -104,7 +104,8 @@ const Row = ({
               <Table size="small">
                 <TableHead>
                   <TableRow>
-                    <TableCell>NOME</TableCell>
+                    <TableCell width={450}>NOME</TableCell>
+                    <TableCell>DESCRIÇÃO</TableCell>
                     <TableCell width={120}>PREÇO</TableCell>
                     <TableCell align="center" width={100}>
                       AÇÕES
@@ -115,6 +116,7 @@ const Row = ({
                   {config.configurationItems.map((item: any) => (
                     <TableRow key={item.id}>
                       <TableCell>{item.name}</TableCell>
+                      <TableCell>{item.description}</TableCell>
                       <TableCell>
                         {new Intl.NumberFormat('pt-BR', {
                           style: 'currency',
@@ -125,7 +127,9 @@ const Row = ({
                         <ButtonGroup>
                           <Tooltip title="Editar">
                             <IconButton
-                              onClick={() => handleProductUpdateModal(item.id)}
+                              onClick={() =>
+                                handleConfigItemUpdateModal(item.id)
+                              }
                               color="primary"
                               component="button"
                             >
@@ -134,7 +138,9 @@ const Row = ({
                           </Tooltip>
                           <Tooltip title="Excluir">
                             <IconButton
-                              onClick={() => handleProductDeleteModal(item.id)}
+                              onClick={() =>
+                                handleConfigItemDeleteModal(item.id)
+                              }
                               color="error"
                               component="button"
                             >
@@ -160,9 +166,9 @@ export const Component = ({
   handleConfigCreateModal,
   handleConfigDeleteModal,
   handleConfigUpdateModal,
-  handleCategoryCreateModal,
-  handleProductUpdateModal,
-  handleProductDeleteModal,
+  handleConfigItemCreateModal,
+  handleConfigItemUpdateModal,
+  handleConfigItemDeleteModal,
 }: Props) => {
   return (
     <>
@@ -210,9 +216,9 @@ export const Component = ({
                     config={config}
                     handleConfigDeleteModal={handleConfigDeleteModal}
                     handleConfigUpdateModal={handleConfigUpdateModal}
-                    handleCategoryCreateModal={handleCategoryCreateModal}
-                    handleProductUpdateModal={handleProductUpdateModal}
-                    handleProductDeleteModal={handleProductDeleteModal}
+                    handleConfigItemCreateModal={handleConfigItemCreateModal}
+                    handleConfigItemUpdateModal={handleConfigItemUpdateModal}
+                    handleConfigItemDeleteModal={handleConfigItemDeleteModal}
                   />
                 ))}
               </TableBody>

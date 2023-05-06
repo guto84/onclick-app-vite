@@ -28,6 +28,10 @@ import configurationCreateReducer from '../store/slices/configurations/configura
 import configurationDeleteReducer from '../store/slices/configurations/configuration-delete.slice'
 import configurationUpdateReducer from '../store/slices/configurations/configuration-update.slice'
 
+import configurationItemCreateReducer from '../store/slices/configuration-items/configuration-item-create.slice'
+import configurationItemDeleteReducer from '../store/slices/configuration-items/configuration-item-delete.slice'
+import configurationItemUpdateReducer from '../store/slices/configuration-items/configuration-item-update.slice'
+
 export const reducers = {
   companyCreate: companyCreateReducer,
   companyFindAll: companyFindAllReducer,
@@ -58,4 +62,8 @@ export const reducers = {
   configurationCreate: configurationCreateReducer,
   configurationDelete: configurationDeleteReducer,
   configurationUpdate: configurationUpdateReducer,
+
+  configurationItemCreate: configurationItemCreateReducer,
+  configurationItemDelete: configurationItemDeleteReducer,
+  configurationItemUpdate: configurationItemUpdateReducer,
 }

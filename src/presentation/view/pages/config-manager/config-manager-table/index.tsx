@@ -4,16 +4,16 @@ import { Component } from './component'
 import {
   categoryFindByIdConfigsItems,
   configurationFindById,
-  productFindById,
-  setCategoryCreateModal,
+  configurationItemFindById,
+  setConfigId,
   setConfigurationCreateModal,
   setConfigurationDeleteId,
   setConfigurationDeleteModal,
+  setConfigurationItemCreateModal,
+  setConfigurationItemDeleteId,
+  setConfigurationItemDeleteModal,
+  setConfigurationItemUpdateModal,
   setConfigurationUpdateModal,
-  setGroupId,
-  setProductDeleteId,
-  setProductDeleteModal,
-  setProductUpdateModal,
 } from '../../../../store/slices'
 import { useParams } from 'react-router-dom'
 import { Loading, Toast } from '../../../components'
@@ -45,19 +45,19 @@ export const ConfigManagerTable = () => {
     dispatch(setConfigurationDeleteId(id))
   }
 
-  const handleCategoryCreateModal = (open: boolean, id: string) => {
-    dispatch(setGroupId(id))
-    dispatch(setCategoryCreateModal(open))
+  const handleConfigItemCreateModal = (open: boolean, id: string) => {
+    dispatch(setConfigId(id))
+    dispatch(setConfigurationItemCreateModal(open))
   }
 
-  const handleProductUpdateModal = (id: string) => {
-    dispatch(setProductUpdateModal(true))
-    dispatch(productFindById(id))
+  const handleConfigItemUpdateModal = (id: string) => {
+    dispatch(setConfigurationItemUpdateModal(true))
+    dispatch(configurationItemFindById(id))
   }
 
-  const handleProductDeleteModal = (id: string) => {
-    dispatch(setProductDeleteModal(true))
-    dispatch(setProductDeleteId(id))
+  const handleConfigItemDeleteModal = (id: string) => {
+    dispatch(setConfigurationItemDeleteModal(true))
+    dispatch(setConfigurationItemDeleteId(id))
   }
 
   return (
@@ -67,9 +67,9 @@ export const ConfigManagerTable = () => {
         handleConfigCreateModal={handleConfigCreateModal}
         handleConfigDeleteModal={handleConfigDeleteModal}
         handleConfigUpdateModal={handleConfigUpdateModal}
-        handleCategoryCreateModal={handleCategoryCreateModal}
-        handleProductUpdateModal={handleProductUpdateModal}
-        handleProductDeleteModal={handleProductDeleteModal}
+        handleConfigItemCreateModal={handleConfigItemCreateModal}
+        handleConfigItemUpdateModal={handleConfigItemUpdateModal}
+        handleConfigItemDeleteModal={handleConfigItemDeleteModal}
       />
       <Loading loading={selector.loading} />
       <Toast />

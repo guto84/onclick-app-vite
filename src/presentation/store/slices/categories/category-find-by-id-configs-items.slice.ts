@@ -20,7 +20,7 @@ export const initialState: CategoryFindByIdConfigsItemsState = {
     configurations: [
       {
         id: '',
-        required: false,
+        name: '',
         min: 0,
         max: 0,
         configurationItems: [{ id: '', name: '', price: 0 }],

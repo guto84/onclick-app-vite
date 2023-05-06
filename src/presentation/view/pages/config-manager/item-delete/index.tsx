@@ -1,22 +1,24 @@
+import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import {
-  productDelete,
-  groupFindAll,
-  setProductDeleteModal,
+  categoryFindByIdConfigsItems,
+  configurationItemDelete,
+  setConfigurationItemDeleteModal,
 } from '../../../../store/slices'
 import { Component } from './component'
 
 export const ItemDelete = () => {
+  const params = useParams()
   const dispatch = useAppDispatch()
-  const selector = useAppSelector((state) => state.productDelete)
+  const selector = useAppSelector((state) => state.configurationItemDelete)
 
-  const handleProductDelete = async (): Promise<void> => {
-    await dispatch(productDelete(selector.id))
-    await dispatch(groupFindAll())
+  const handleConfigItemDelete = async (): Promise<void> => {
+    await dispatch(configurationItemDelete(selector.id))
+    await dispatch(categoryFindByIdConfigsItems(params.id || ''))
   }
 
-  const handleProductDeleteModal = (open: boolean) => {
-    dispatch(setProductDeleteModal(open))
+  const handleConfigItemDeleteModal = (open: boolean) => {
+    dispatch(setConfigurationItemDeleteModal(open))
   }
 
   return (
@@ -24,8 +26,8 @@ export const ItemDelete = () => {
       <Component
         open={selector.modal}
         loading={selector.loading}
-        handleOpen={handleProductDeleteModal}
-        handleDelete={handleProductDelete}
+        handleOpen={handleConfigItemDeleteModal}
+        handleDelete={handleConfigItemDelete}
       />
     </>
   )
