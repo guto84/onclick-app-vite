@@ -51,3 +51,8 @@ export * from './configuration-items/configuration-item-delete.service'
 export * from './configuration-items/configuration-item-find-by-id.service'
 export * from './configuration-items/configuration-item-update.service'
 export * from './configuration-items/types'
+
+export * from './orders/order-find-all.service'
+export * from './orders/order-find-by-id.service'
+export * from './orders/order-update.service'
+export * from './orders/types'

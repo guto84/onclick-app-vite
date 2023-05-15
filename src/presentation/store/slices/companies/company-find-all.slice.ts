@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { CompanyFindAllService, CompanyOutput } from '../../../../service'
 import { toastError } from '../../../view/utils'
 
-export type CopmpanyFindAllState = {
+export type CompanyFindAllState = {
   loading: boolean
   list: CompanyOutput[]
 }
 
-export const companyFindAllInitialState: CopmpanyFindAllState = {
+export const companyFindAllInitialState: CompanyFindAllState = {
   loading: true,
   list: [],
 }

@@ -1,4 +1,5 @@
 export * from './breadcrumb-item'
+export * from './detail-item'
 export * from './loading'
 export * from './modal-card'
 export * from './template-admin'

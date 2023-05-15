@@ -31,3 +31,6 @@ export * from './configurations/configuration-update.slice'
 export * from './configuration-items/configuration-item-create.slice'
 export * from './configuration-items/configuration-item-delete.slice'
 export * from './configuration-items/configuration-item-update.slice'
+
+export * from './orders/order-find-all.slice'
+export * from './orders/order-find-by-id.slice'

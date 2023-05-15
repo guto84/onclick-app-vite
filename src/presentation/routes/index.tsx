@@ -5,6 +5,7 @@ import {
   Login,
   MenuManager,
   ConfigManager,
+  Orders,
 } from '../view/pages'
 
 const RoutesRoot = () => {
@@ -19,6 +20,7 @@ const RoutesRoot = () => {
           path="/cardapios/categorias/:id/configuracoes"
           element={<ConfigManager />}
         />
+        <Route path="/pedidos" element={<Orders />} />
       </Routes>
     </BrowserRouter>
   )
