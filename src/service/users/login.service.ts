@@ -1,4 +1,4 @@
-import { LoginInput } from '..'
+import { LoginInput, Role } from '..'
 import {
   HttpRequest,
   envAdapter,
@@ -21,9 +21,12 @@ export class LoginService {
     }
 
     const response = await httpClientAdapter.request(httpRequest)
+    const roles: Role[] = []
+    response.data.roles.map((role: any) => roles.push(role.rolename))
 
     return {
       accessToken: response.data.token,
+      roles: JSON.stringify(roles),
     }
   }
 }

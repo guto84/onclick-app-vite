@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import { BreadcrumbItem } from '../breadcrumb-item'
 import * as S from './styles'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   listBreadcrumb?: {
@@ -27,7 +28,9 @@ export const TemplateAdmin = ({
   currentBreadcrumb,
   children,
 }: Props) => {
+  const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [roles] = React.useState(localStorage.getItem('roles'))
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -35,6 +38,12 @@ export const TemplateAdmin = ({
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('roles')
+    navigate('/login')
   }
 
   return (
@@ -72,8 +81,22 @@ export const TemplateAdmin = ({
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Empresas</MenuItem>
-                  <MenuItem onClick={handleClose}>Menu</MenuItem>
+                  {roles?.includes('ROLE_ADMIN') && (
+                    <MenuItem onClick={() => navigate('/empresas')}>
+                      Empresas
+                    </MenuItem>
+                  )}
+                  {roles?.includes('ROLE_PROVIDER') && (
+                    <MenuItem onClick={() => navigate('/cardapios')}>
+                      Cardápio
+                    </MenuItem>
+                  )}
+                  {roles?.includes('ROLE_PROVIDER') && (
+                    <MenuItem onClick={() => navigate('/pedidos')}>
+                      Pedidos
+                    </MenuItem>
+                  )}
+                  <MenuItem onClick={handleLogout}>Sair</MenuItem>
                 </Menu>
               </div>
             </S.Toolbar>

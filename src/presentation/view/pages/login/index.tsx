@@ -11,7 +11,12 @@ export const Login = () => {
       const service = new LoginService()
       const response = await service.execute(body)
       localStorage.setItem('accessToken', response.accessToken)
-      navigate('/')
+      localStorage.setItem('roles', response.roles.toString())
+      if (response.roles.toString().includes('ROLE_ADMIN')) {
+        navigate('/empresas')
+      } else {
+        navigate('/pedidos')
+      }
     } catch (error) {
       toast.error('Erro ao fazer login, tente novamente!', {
         position: 'bottom-right',
