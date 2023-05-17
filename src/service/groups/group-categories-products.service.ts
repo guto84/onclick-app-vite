@@ -4,10 +4,10 @@ import {
   httpClientAdapter,
 } from '../../infra/adapters'
 import {
-  Category,
+  GroupCategory,
   GroupCategoriesProductsOutput,
-  Product,
-} from './types/group-categories-products.output'
+  GroupProduct,
+} from './types'
 
 export class GroupCategoriesProductsService {
   async execute(): Promise<GroupCategoriesProductsOutput[]> {
@@ -25,10 +25,10 @@ export class GroupCategoriesProductsService {
     return response.data.map((item: GroupCategoriesProductsOutput) => ({
       id: item.id,
       name: item.name,
-      categories: item.categories.map((item: Category) => ({
+      categories: item.categories.map((item: GroupCategory) => ({
         id: item.id,
         name: item.name,
-        products: item.products.map((item: Product) => ({
+        products: item.products.map((item: GroupProduct) => ({
           id: item.id,
           name: item.name,
           description: item.description,

@@ -106,15 +106,17 @@ export const Component = ({
               <Typography variant="h6" gutterBottom>
                 Endereço
               </Typography>
-              <DetailItem label="Logradouro" value={order.name} />
               <DetailItem
-                label="Complemento"
+                label="Logradouro"
                 value={`${order.address}, ${order.addressNumber}`}
               />
-              <DetailItem
-                label="Bairro"
-                value={order.addressComplement ? order.addressComplement : ''}
-              />
+              {order.addressComplement && (
+                <DetailItem
+                  label="Complemento"
+                  value={order.addressComplement || ''}
+                />
+              )}
+              <DetailItem label="Bairro" value={order.district} />
               <DetailItem label="CEP" value={zipcodeMask(order.zipcode)} />
             </CardContent>
 
@@ -136,7 +138,7 @@ export const Component = ({
                     nodeId={item.id}
                     label={
                       <strong>
-                        {item.quantity}x - ${item.product.name} = $
+                        {item.quantity}x - {item.product.name} = $
                         {brlFormat(item.total)}
                       </strong>
                     }

@@ -3,6 +3,7 @@ export * from './companies/company-create.service'
 export * from './companies/company-find-by-id.service'
 export * from './companies/company-delete.service'
 export * from './companies/company-find-by-id-users.service'
+export * from './companies/company-menu.service'
 export * from './companies/company-update.service'
 export * from './companies/types'
 

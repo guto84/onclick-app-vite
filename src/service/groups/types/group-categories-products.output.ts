@@ -1,16 +1,16 @@
 export type GroupCategoriesProductsOutput = {
   id: string
   name: string
-  categories: Category[]
+  categories: GroupCategory[]
 }
 
-export type Category = {
+export type GroupCategory = {
   id: string
   name: string
-  products: Product[]
+  products: GroupProduct[]
 }
 
-export type Product = {
+export type GroupProduct = {
   id: string
   name: string
   description: string

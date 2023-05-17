@@ -2,6 +2,7 @@ export * from './companies/company-create.slice'
 export * from './companies/company-delete.slice'
 export * from './companies/company-find-all.slice'
 export * from './companies/company-find-by-id-users.slice'
+export * from './companies/company-menu.slice'
 export * from './companies/company-update.slice'
 
 export * from './roles/role.find-all.slice'

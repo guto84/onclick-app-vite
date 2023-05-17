@@ -39,7 +39,7 @@ export const Component = ({
     IN_PREPARATION: 'Em Preparação',
     READY: 'Pronto',
     OUT_FOR_DELIVERY: 'Saiu para Entrega',
-    DELIVERED: 'Entrega',
+    DELIVERED: 'Entregue',
   }
 
   return (

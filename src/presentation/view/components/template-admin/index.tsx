@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   AppBar,
   Breadcrumbs,
@@ -10,9 +11,9 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
+import { Menu as MenuIcon } from '@mui/icons-material'
 import { BreadcrumbItem } from '../breadcrumb-item'
 import * as S from './styles'
-import { useNavigate } from 'react-router-dom'
 
 type Props = {
   listBreadcrumb?: {
@@ -64,7 +65,7 @@ export const TemplateAdmin = ({
                   onClick={handleMenu}
                   color="inherit"
                 >
-                  Menu
+                  <MenuIcon />
                 </Button>
                 <Menu
                   id="menu-appbar"

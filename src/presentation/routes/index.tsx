@@ -56,7 +56,7 @@ const RoutesRoot = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/cardapios/:url" element={<Menu />} />
+        <Route path="/:url" element={<Menu />} />
       </Routes>
     </BrowserRouter>
   )
