@@ -19,6 +19,8 @@ export class OrderFindByIdService {
     const response = await httpClientAdapter.request(httpRequest)
     const { data } = response
 
+    console.log(data)
+
     return {
       id: data.id,
       name: data.name,
@@ -42,15 +44,15 @@ export class OrderFindByIdService {
         },
         orderConfigurations: item.orderConfigurations.map(
           (config: OrderConfigurations) => ({
-            id: config.configurationItems.id,
-            name: config.configurationItems.name,
-            description: config.configurationItems.description,
-            price: config.configurationItems.price,
+            id: config.id,
+            name: config.name,
+            description: config.description,
+            price: config.price,
             configuration: {
-              id: config.configurationItems.configuration.id,
-              name: config.configurationItems.configuration.name,
-              min: config.configurationItems.configuration.min,
-              max: config.configurationItems.configuration.max,
+              id: config.configuration.id,
+              name: config.configuration.name,
+              min: config.configuration.min,
+              max: config.configuration.max,
             },
             quantity: config.quantity,
             total: config.total,

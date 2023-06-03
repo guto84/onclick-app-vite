@@ -33,6 +33,7 @@ export const companyFindById = createAsyncThunk(
   async (id: string) => {
     const service = new CompanyFindByIdService()
     const response = await service.execute(id)
+    console.log(response)
     return response
   },
 )

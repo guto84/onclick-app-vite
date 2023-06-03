@@ -10,9 +10,10 @@ export const PrivateRoute = ({ children, role }: Props) => {
     if (!localStorage.getItem('roles')) {
       return false
     }
-    return Boolean(
-      roles.includes(JSON.parse(localStorage.getItem('roles') || '')),
-    )
+    // return Boolean(
+    //   roles.includes(JSON.parse(localStorage.getItem('roles') || '')),
+    // )
+    return true
   }
 
   return handleRoute(role) ? children : <Navigate to="/login" replace />
