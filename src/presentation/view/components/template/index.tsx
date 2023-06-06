@@ -1,7 +1,7 @@
 import * as React from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AppBar, Button, Box, Container, Grid, Typography } from '@mui/material'
-import { Menu as MenuIcon } from '@mui/icons-material'
+import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material'
 import * as S from './styles'
 
 type Props = {
@@ -9,7 +9,8 @@ type Props = {
 }
 
 export const Template = ({ children }: Props) => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const params = useParams()
 
   return (
     <>
@@ -26,10 +27,10 @@ export const Template = ({ children }: Props) => {
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  // onClick={() => console.log('wowow')}
+                  onClick={() => navigate(`/${params.url}/pedidos/cadastrar`)}
                   color="inherit"
                 >
-                  <MenuIcon />
+                  <ShoppingCartIcon />
                 </Button>
               </div>
             </S.Toolbar>

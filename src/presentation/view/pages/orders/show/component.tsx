@@ -138,7 +138,7 @@ export const Component = ({
                     nodeId={item.id}
                     label={
                       <strong>
-                        {item.quantity}x - {item.product.name} =
+                        {item.quantity}x - {item.product.name} ={' '}
                         {brlFormat(item.total)}
                       </strong>
                     }

@@ -23,6 +23,7 @@ export * from './categories/category-find-by-id-configs-items.slice'
 
 export * from './products/product-create.slice'
 export * from './products/product-delete.slice'
+export * from './products/product-find-by-id-configs-items.slice'
 export * from './products/product-update.slice'
 
 export * from './configurations/configuration-create.slice'

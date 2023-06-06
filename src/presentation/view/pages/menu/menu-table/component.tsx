@@ -74,7 +74,9 @@ const Row = ({ group }: any) => {
                         key={product.id}
                         hover
                         sx={{ cursor: 'pointer' }}
-                        onClick={() => navigate(`${params.url}/${product.id}`)}
+                        onClick={() =>
+                          navigate(`/${params.url}/produtos/${product.id}`)
+                        }
                       >
                         <TableCell>{product.name}</TableCell>
                         <TableCell>{product.description}</TableCell>

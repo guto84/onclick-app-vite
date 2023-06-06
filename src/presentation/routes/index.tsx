@@ -7,9 +7,12 @@ import {
   ConfigManager,
   Orders,
   Menu,
+  ProductDetails,
 } from '../view/pages'
 import { PrivateRoute } from './private-route'
 import { authCollection } from './auth-collection'
+import { OrderCreate } from '../view/pages/order-create'
+import { OrderDetail } from '../view/pages/order-detail'
 
 const RoutesRoot = () => {
   return (
@@ -57,6 +60,9 @@ const RoutesRoot = () => {
           }
         />
         <Route path="/:url" element={<Menu />} />
+        <Route path="/:url/produtos/:id" element={<ProductDetails />} />
+        <Route path="/:url/pedidos/:id" element={<OrderDetail />} />
+        <Route path="/:url/pedidos/cadastrar" element={<OrderCreate />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1247,6 +1247,764 @@ createServer({
         },
       ],
     }))
+
+    this.get(`${envAdapter.apiUrl}/companies/menu/lanchonete`, () => ({
+      id: '1',
+      name: 'Lanchonete',
+      url: 'lanchonete',
+      groups: [
+        {
+          id: '1',
+          name: 'Lanches',
+          categories: [
+            {
+              id: '1',
+              name: 'Lanches com Hamburguer',
+              products: [
+                {
+                  id: '1',
+                  name: 'X-Burguer',
+                  description: 'Hamburguer, Queijo e Tomate',
+                  price: 16.0,
+                },
+                {
+                  id: '2',
+                  name: 'X-Salada',
+                  description: 'Hamburguer, Queijo, Tomate e Alface',
+                  price: 17.0,
+                },
+                {
+                  id: '3',
+                  name: 'X-Bacon',
+                  description: 'Hamburguer, Queijo, Tomate e Bacon',
+                  price: 19.0,
+                },
+              ],
+            },
+            {
+              id: '2',
+              name: 'Lanches com Frango',
+              products: [
+                {
+                  id: '4',
+                  name: 'Frango',
+                  description: 'Frango, Queijo e Tomate',
+                  price: 17.0,
+                },
+                {
+                  id: '5',
+                  name: 'Frango-Salada',
+                  description: 'Frango, Queijo, Tomate e Alface',
+                  price: 18.0,
+                },
+                {
+                  id: '6',
+                  name: 'Frango-Bacon',
+                  description: 'Frango, Queijo, Tomate e Bacon',
+                  price: 20.0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: '2',
+          name: 'Porções',
+          categories: [
+            {
+              id: '3',
+              name: 'Porções Quentes',
+              products: [
+                {
+                  id: '7',
+                  name: 'Batata Frita',
+                  description: '500 gramas',
+                  price: 25.0,
+                },
+                {
+                  id: '8',
+                  name: 'Polenta Frita',
+                  description: '500 gramas',
+                  price: 25.0,
+                },
+                {
+                  id: '9',
+                  name: 'Filé de Tilápia',
+                  description: '500 gramas',
+                  price: 40.0,
+                },
+              ],
+            },
+            {
+              id: '4',
+              name: 'Porções Frias',
+              products: [
+                {
+                  id: '10',
+                  name: 'Salame',
+                  description: '300 gramas',
+                  price: 30.0,
+                },
+                {
+                  id: '11',
+                  name: 'Frios',
+                  description: '300 gramas',
+                  price: 25.0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: '3',
+          name: 'Bebidas',
+          categories: [
+            {
+              id: '5',
+              name: 'Refrigerantes',
+              products: [
+                {
+                  id: '12',
+                  name: 'Coca-Cola',
+                  description: 'Lata 350 ml',
+                  price: 4.0,
+                },
+                {
+                  id: '13',
+                  name: 'Guaraná',
+                  description: 'Lata 350 ml',
+                  price: 4.0,
+                },
+              ],
+            },
+            {
+              id: '6',
+              name: 'Cervejas',
+              products: [
+                {
+                  id: '14',
+                  name: 'Brahma',
+                  description: 'Lata 350 ml',
+                  price: 5.0,
+                },
+                {
+                  id: '15',
+                  name: 'Skol',
+                  description: 'Lata 350 ml',
+                  price: 5.0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/1/configurations`, () => ({
+      id: '1',
+      name: 'X-Burguer',
+      description: 'Hamburguer, Queijo e Tomate',
+      price: 16.0,
+      category: {
+        id: '1',
+        name: 'Lanches com Hamburguer',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '4',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '5',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/2/configurations`, () => ({
+      id: '2',
+      name: 'X-Salada',
+      description: 'Hamburguer, Queijo, Tomate e Alface',
+      price: 17.0,
+      category: {
+        id: '1',
+        name: 'Lanches com Hamburguer',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '4',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '5',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/3/configurations`, () => ({
+      id: '3',
+      name: 'X-Bacon',
+      description: 'Hamburguer, Queijo, Tomate e Bacon',
+      price: 19.0,
+      category: {
+        id: '1',
+        name: 'Lanches com Hamburguer',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '4',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '5',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '7',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/4/configurations`, () => ({
+      id: '4',
+      name: 'Frango',
+      description: 'Frango, Queijo e Tomate',
+      price: 17.0,
+      category: {
+        id: '2',
+        name: 'Lanches com Frango',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '5',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '7',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '8',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '9',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/5/configurations`, () => ({
+      id: '5',
+      name: 'Frango-Salada',
+      description: 'Frango, Queijo, Tomate e Alface',
+      price: 18.0,
+      category: {
+        id: '2',
+        name: 'Lanches com Frango',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '5',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '7',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '8',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '9',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/6/configurations`, () => ({
+      id: '6',
+      name: 'Frango-Bacon',
+      description: 'Frango, Queijo, Tomate e Bacon',
+      price: 20.0,
+      category: {
+        id: '2',
+        name: 'Lanches com Frango',
+        configurations: [
+          {
+            id: '1',
+            name: 'Escolha seu Pão',
+            min: 1,
+            max: 1,
+            configurationItems: [
+              {
+                id: '1',
+                name: 'Pão de Hamburguer',
+                description: '',
+                price: null,
+              },
+              {
+                id: '2',
+                name: 'Pão de Frances',
+                description: '',
+                price: null,
+              },
+              {
+                id: '3',
+                name: 'Pão Australiano',
+                description: '',
+                price: 5.0,
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Adicionais',
+            min: 0,
+            max: 3,
+            configurationItems: [
+              {
+                id: '4',
+                name: 'Maionese Caseira',
+                description: '50 gramas',
+                price: 3.0,
+              },
+              {
+                id: '5',
+                name: 'Queijo',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '6',
+                name: 'Presunto',
+                description: '50 gramas',
+                price: 2.0,
+              },
+              {
+                id: '7',
+                name: 'Alface',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '8',
+                name: 'Tomate',
+                description: '',
+                price: 1.0,
+              },
+              {
+                id: '9',
+                name: 'Milho',
+                description: '',
+                price: 1.0,
+              },
+            ],
+          },
+        ],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/7/configurations`, () => ({
+      id: '7',
+      name: 'Batata Frita',
+      description: '500 gramas',
+      price: 25.0,
+      category: {
+        id: '3',
+        name: 'Porções Quentes',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/8/configurations`, () => ({
+      id: '8',
+      name: 'Polenta Frita',
+      description: '500 gramas',
+      price: 25.0,
+      category: {
+        id: '3',
+        name: 'Porções Quentes',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/9/configurations`, () => ({
+      id: '9',
+      name: 'Filé de Tilápia',
+      description: '500 gramas',
+      price: 40.0,
+      category: {
+        id: '3',
+        name: 'Porções Quentes',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/10/configurations`, () => ({
+      id: '10',
+      name: 'Salame',
+      description: '300 gramas',
+      price: 30.0,
+      category: {
+        id: '4',
+        name: 'Porções Frias',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/11/configurations`, () => ({
+      id: '11',
+      name: 'Frios',
+      description: '300 gramas',
+      price: 25.0,
+      category: {
+        id: '4',
+        name: 'Porções Frias',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/12/configurations`, () => ({
+      id: '12',
+      name: 'Coca-Cola',
+      description: 'Lata 350 ml',
+      price: 4.0,
+      category: {
+        id: '5',
+        name: 'Refrigerantes',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/13/configurations`, () => ({
+      id: '13',
+      name: 'Guaraná',
+      description: 'Lata 350 ml',
+      price: 4.0,
+      category: {
+        id: '5',
+        name: 'Refrigerantes',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/14/configurations`, () => ({
+      id: '14',
+      name: 'Brahma',
+      description: 'Lata 350 ml',
+      price: 5.0,
+      category: {
+        id: '6',
+        name: 'Cervejas',
+        configurations: [],
+      },
+    }))
+
+    this.get(`${envAdapter.apiUrl}/products/15/configurations`, () => ({
+      id: '15',
+      name: 'Skol',
+      description: 'Lata 350 ml',
+      price: 5.0,
+      category: {
+        id: '6',
+        name: 'Cervejas',
+        configurations: [],
+      },
+    }))
   },
 })
 

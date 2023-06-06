@@ -39,6 +39,7 @@ export * from './products/product-create.service'
 export * from './products/product-delete.service'
 export * from './products/product-find-by-id.service'
 export * from './products/product-update.service'
+export * from './products/product-find-by-id-configurations.service'
 export * from './products/types'
 
 export * from './configurations/configuration-create.service'

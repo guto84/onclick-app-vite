@@ -12,14 +12,11 @@ export class OrderFindByIdService {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }
 
     const response = await httpClientAdapter.request(httpRequest)
     const { data } = response
-
-    console.log(data)
 
     return {
       id: data.id,

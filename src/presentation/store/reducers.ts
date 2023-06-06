@@ -23,6 +23,7 @@ import categoryUpdateReducer from '../store/slices/categories/category-update.sl
 
 import productCreateReducer from '../store/slices/products/product-create.slice'
 import productDeleteReducer from '../store/slices/products/product-delete.slice'
+import productFindByIdConfigsItemsReducer from '../store/slices/products/product-find-by-id-configs-items.slice'
 import productUpdateReducer from '../store/slices/products/product-update.slice'
 
 import configurationCreateReducer from '../store/slices/configurations/configuration-create.slice'
@@ -62,6 +63,7 @@ export const reducers = {
 
   productCreate: productCreateReducer,
   productDelete: productDeleteReducer,
+  productFindByIdConfigsItems: productFindByIdConfigsItemsReducer,
   productUpdate: productUpdateReducer,
 
   configurationCreate: configurationCreateReducer,
