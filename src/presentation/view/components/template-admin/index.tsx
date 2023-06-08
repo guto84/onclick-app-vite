@@ -53,7 +53,12 @@ export const TemplateAdmin = ({
         <AppBar position="static">
           <Container maxWidth="xl">
             <S.Toolbar>
-              <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
+              <Typography
+                variant="h6"
+                component="h1"
+                sx={{ flexGrow: 1, cursor: 'pointer' }}
+                onClick={() => navigate('/')}
+              >
                 OnClick Delivery
               </Typography>
               <div>
