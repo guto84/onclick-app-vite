@@ -24,7 +24,7 @@ export const Template = ({ children }: Props) => {
                 sx={{ flexGrow: 1, cursor: 'pointer' }}
                 onClick={() => navigate('/')}
               >
-                OnClick Delivery
+                OnClick Delivery Eats
               </Typography>
               <div>
                 <Button
