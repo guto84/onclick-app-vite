@@ -8,6 +8,7 @@ import {
   Orders,
   Menu,
   ProductDetails,
+  Home,
 } from '../view/pages'
 import { PrivateRoute } from './private-route'
 import { authCollection } from './auth-collection'
@@ -18,6 +19,7 @@ const RoutesRoot = () => {
   return (
     <BrowserRouter basename="onclick-app-vite">
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/empresas"
