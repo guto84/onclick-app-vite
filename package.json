@@ -1,14 +1,14 @@
 {
+  "homepage": "https://guto84.github.io/onclick-app-vite",
   "name": "onclick",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://guto84.github.io/onclick-app-vite",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "tsc && vite build && cp -a dist/. build/ && rm -r dist/",
+    "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
