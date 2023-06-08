@@ -16,9 +16,8 @@ import { OrderDetail } from '../view/pages/order-detail'
 
 const RoutesRoot = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="onclick-app-vite">
       <Routes>
-        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/empresas"
