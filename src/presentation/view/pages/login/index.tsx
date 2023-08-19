@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { LoginComponent } from './component'
 import { LoginInput, LoginService } from '../../../../service'
 import { toast } from 'react-toastify'
+import { jwtAdapter } from '../../../../infra/adapters'
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -10,9 +11,12 @@ export const Login = () => {
     try {
       const service = new LoginService()
       const response = await service.execute(body)
+      const jwtDecode = jwtAdapter.decode(response.accessToken)
+
       localStorage.setItem('accessToken', response.accessToken)
-      localStorage.setItem('roles', response.roles.toString())
-      if (response.roles.toString().includes('ROLE_ADMIN')) {
+      localStorage.setItem('roles', JSON.stringify(jwtDecode.authorities))
+
+      if (jwtDecode.authorities.includes('ROLE_ADMIN')) {
         navigate('/empresas')
       } else {
         navigate('/pedidos')

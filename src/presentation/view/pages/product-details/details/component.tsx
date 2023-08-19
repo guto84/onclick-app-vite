@@ -16,6 +16,8 @@ import { ArrowBack as ArrowBackIcon } from '@mui/icons-material'
 import { Template } from '../../../components'
 import { ProductConfigsItemsOutput } from '../../../../../service'
 import * as S from './styles'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 type Props = {
   product: ProductConfigsItemsOutput
@@ -23,6 +25,39 @@ type Props = {
 }
 
 export const Component = ({ product, handleBack }: Props) => {
+  const configurations: { [key: string]: string[] } = {}
+  const configurationsValues: { [key: string]: string[] } = {}
+  product.category.configurations.map((item) => {
+    configurations[item.id] = []
+    configurationsValues[item.id] = []
+  })
+
+  const initialValues: any = configurationsValues
+  initialValues.quantity = 1
+  initialValues.product = {
+    id: product.id,
+  }
+
+  const validation: any = {}
+  product.category.configurations.map((item) => {
+    validation[item.id] = Yup.array()
+      .min(item.minimum, `Selecione pelo menos ${item.minimum} opcões`)
+      .max(item.maximum, `Selecione até ${item.maximum} opcões`)
+      .of(Yup.string().required())
+      .required()
+  })
+
+  const validationSchema = Yup.object().shape(validation)
+
+  const form = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: async (values) => {
+      console.log(values)
+    },
+    enableReinitialize: true,
+  })
+
   return (
     <Template>
       <Card>
@@ -46,19 +81,27 @@ export const Component = ({ product, handleBack }: Props) => {
               }).format(product.price)}
             </ListItem>
           </List>
-          <form>
+          <form onSubmit={form.handleSubmit}>
             {product.category.configurations.map((config) => (
               <>
                 <S.ConfigurationHeader key={config.id}>
                   <div>
                     <Typography variant="subtitle1">{config.name}</Typography>
-                    <Typography variant="subtitle2">{`Selecione ${
-                      config.max > 1 ? 'até' : ''
-                    } ${config.max} ite${
-                      config.max === 1 ? 'm' : 'ns'
-                    }`}</Typography>
+                    {!(form.touched[config.id] && form.errors[config.id]) && (
+                      <Typography variant="subtitle2">{`Selecione ${
+                        config.maximum > 1 ? 'até' : ''
+                      } ${config.maximum} ite${
+                        config.maximum === 1 ? 'm' : 'ns'
+                      }`}</Typography>
+                    )}
+                    {!!(form.touched[config.id] && form.errors[config.id]) && (
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ color: 'red', fontWeight: 'bold' }}
+                      >{`${form.errors[config.id]}`}</Typography>
+                    )}
                   </div>
-                  {config.min > 0 && (
+                  {config.minimum > 0 && (
                     <S.RequiredLabel>OBRIGATÓRIO</S.RequiredLabel>
                   )}
                 </S.ConfigurationHeader>
@@ -67,6 +110,9 @@ export const Component = ({ product, handleBack }: Props) => {
                     <FormControlLabel
                       sx={{ borderBottom: '1px solid #e0e0e0' }}
                       control={<Checkbox />}
+                      name={config.id}
+                      value={item.id}
+                      onChange={form.handleChange}
                       label={
                         <S.CheckboxLabel>
                           <S.CheckboxLabelTitle>
@@ -88,7 +134,7 @@ export const Component = ({ product, handleBack }: Props) => {
                 ))}
               </>
             ))}
-            <Button variant="contained" fullWidth>
+            <Button type="submit" variant="contained" fullWidth>
               Adicionar
             </Button>
           </form>

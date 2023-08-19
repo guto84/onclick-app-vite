@@ -13,8 +13,8 @@ export type ProductConfigsItemsOutput = {
 export type Configuration = {
   id: string
   name: string
-  min: number
-  max: number
+  minimum: number
+  maximum: number
   configurationItems: ConfigurationItem[]
 }
 

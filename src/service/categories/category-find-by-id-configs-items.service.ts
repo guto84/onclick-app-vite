@@ -25,8 +25,8 @@ export class CategoryFindByIdConfigsItemsService {
       configurations: data.configurations.map((config: Config) => ({
         id: config.id,
         name: config.name,
-        min: config.min,
-        max: config.max,
+        minimum: config.minimum,
+        maximum: config.maximum,
         configurationItems: config.configurationItems.map((item) => ({
           id: item.id,
           name: item.name,

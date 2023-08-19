@@ -27,7 +27,7 @@ export const OrderTable = () => {
 
   const handleShow = async (id: string) => {
     dispatch(setOrderShowModal(true))
-    dispatch(orderFindById(id))
+    await dispatch(orderFindById(id))
   }
 
   return (

@@ -1,5 +1,5 @@
 export type ConfigurationUpdateInput = {
   name: string
-  min: number
-  max: number
+  minimum: number
+  maximum: number
 }

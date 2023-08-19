@@ -10,6 +10,7 @@ export type OrderItemsOutput = {
   zipcode: string
   phone: string
   status: StatusEnum
+  createdAt: Date
   total: number
   orderItems: OrderItem[]
 }
@@ -17,7 +18,7 @@ export type OrderItemsOutput = {
 export type OrderItem = {
   id: string
   quantity: number
-  total: number
+  subTotal: number
   product: {
     id: string
     name: string
@@ -28,16 +29,12 @@ export type OrderItem = {
 }
 
 export type OrderConfigurations = {
-  id: string
-  name: string
-  description?: string
-  price: number
-  configuration: {
+  quantity: number
+  subTotal: number
+  configurationItem: {
     id: string
     name: string
-    min: number
-    max: number
+    description: string
+    price: number
   }
-  quantity: number
-  total: number
 }

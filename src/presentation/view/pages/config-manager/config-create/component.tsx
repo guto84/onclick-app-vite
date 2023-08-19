@@ -31,14 +31,14 @@ export const Component = ({
 }: Props) => {
   const initialValues = {
     name: '',
-    min: 0,
-    max: 0,
+    minimum: 0,
+    maximum: 0,
     category: { id: categoryId },
   }
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),
-    min: Yup.number().required('Campo obrigatório'),
-    max: Yup.number().required('Campo obrigatório'),
+    minimum: Yup.number().required('Campo obrigatório'),
+    maximum: Yup.number().required('Campo obrigatório'),
   })
 
   const form = useFormik({
@@ -63,77 +63,79 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalCard>
-          <Card>
-            <CardHeader
-              title=""
-              action={
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                  onClick={handleCloseModal}
-                >
-                  <CloseIcon />
-                </IconButton>
-              }
-            />
-            <CardContent>
-              <form onSubmit={form.handleSubmit}>
-                <Grid
-                  container
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={4}
-                >
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Nome"
-                      variant="standard"
-                      fullWidth
-                      name="name"
-                      value={form.values.name}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.name && form.errors.name)}
-                      helperText={form.errors.name}
-                    />
+        <>
+          <ModalCard>
+            <Card>
+              <CardHeader
+                title=""
+                action={
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={handleCloseModal}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                }
+              />
+              <CardContent>
+                <form onSubmit={form.handleSubmit}>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={4}
+                  >
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Nome"
+                        variant="standard"
+                        fullWidth
+                        name="name"
+                        value={form.values.name}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.name && form.errors.name)}
+                        helperText={form.errors.name}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        type="number"
+                        label="Mínimo"
+                        variant="standard"
+                        fullWidth
+                        name="minimum"
+                        value={form.values.minimum}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.minimum && form.errors.minimum)}
+                        helperText={form.errors.minimum}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        type="number"
+                        label="Máximo"
+                        variant="standard"
+                        fullWidth
+                        name="maximum"
+                        value={form.values.maximum}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.maximum && form.errors.maximum)}
+                        helperText={form.errors.maximum}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button type="submit" variant="contained" fullWidth>
+                        Cadastrar
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      type="number"
-                      label="Mínimo"
-                      variant="standard"
-                      fullWidth
-                      name="min"
-                      value={form.values.min}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.min && form.errors.min)}
-                      helperText={form.errors.min}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      type="number"
-                      label="Máximo"
-                      variant="standard"
-                      fullWidth
-                      name="max"
-                      value={form.values.max}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.max && form.errors.max)}
-                      helperText={form.errors.max}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button type="submit" variant="contained" fullWidth>
-                      Cadastrar
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </CardContent>
-          </Card>
-        </ModalCard>
+                </form>
+              </CardContent>
+            </Card>
+          </ModalCard>
+        </>
       </Modal>
 
       <Loading loading={loading} />

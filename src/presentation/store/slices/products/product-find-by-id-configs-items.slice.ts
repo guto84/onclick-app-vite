@@ -24,8 +24,8 @@ const initialState: ProductFindByIdConfigsItemsState = {
         {
           id: '',
           name: '',
-          min: 0,
-          max: 0,
+          minimum: 0,
+          maximum: 0,
           configurationItems: [{ id: '', name: '', description: '', price: 0 }],
         },
       ],

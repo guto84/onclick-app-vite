@@ -28,11 +28,12 @@ export class OrderFindByIdService {
       zipcode: data.zipcode,
       phone: data.phone,
       status: data.status,
+      createdAt: data.createdAt,
       total: data.total,
       orderItems: data.orderItems.map((item: OrderItem) => ({
         id: item.id,
         quantity: item.quantity,
-        total: item.total,
+        subTotal: item.subTotal,
         product: {
           id: item.product.id,
           name: item.product.name,
@@ -41,18 +42,14 @@ export class OrderFindByIdService {
         },
         orderConfigurations: item.orderConfigurations.map(
           (config: OrderConfigurations) => ({
-            id: config.id,
-            name: config.name,
-            description: config.description,
-            price: config.price,
-            configuration: {
-              id: config.configuration.id,
-              name: config.configuration.name,
-              min: config.configuration.min,
-              max: config.configuration.max,
-            },
             quantity: config.quantity,
-            total: config.total,
+            subTotal: config.subTotal,
+            configurationItem: {
+              id: config.configurationItem.id,
+              name: config.configurationItem.name,
+              description: config.configurationItem.description,
+              price: config.configurationItem.price,
+            },
           }),
         ),
       })),

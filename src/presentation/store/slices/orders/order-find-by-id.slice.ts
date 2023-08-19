@@ -27,12 +27,13 @@ export const orderFindByIdInitialState: OrderFindByIdState = {
     zipcode: '',
     phone: '',
     status: StatusEnum.RECEIVED,
+    createdAt: new Date(),
     total: 0,
     orderItems: [
       {
         id: '',
         quantity: 0,
-        total: 0,
+        subTotal: 0,
         product: {
           id: '',
           name: '',
@@ -41,18 +42,14 @@ export const orderFindByIdInitialState: OrderFindByIdState = {
         },
         orderConfigurations: [
           {
-            id: '',
-            name: '',
-            description: '',
-            price: 0,
-            configuration: {
+            quantity: 1,
+            subTotal: 0,
+            configurationItem: {
               id: '',
               name: '',
-              min: 0,
-              max: 0,
+              description: '',
+              price: 0,
             },
-            quantity: 0,
-            total: 0,
           },
         ],
       },

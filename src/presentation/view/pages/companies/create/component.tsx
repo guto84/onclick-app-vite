@@ -55,66 +55,68 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalCard>
-          <Card>
-            <CardHeader
-              title=""
-              action={
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                  onClick={handleCloseModal}
-                >
-                  <CloseIcon />
-                </IconButton>
-              }
-            />
-            <CardContent>
-              <form onSubmit={form.handleSubmit}>
-                <Grid
-                  container
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={4}
-                >
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Nome"
-                      variant="standard"
-                      fullWidth
-                      name="name"
-                      value={form.values.name}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.name && form.errors.name)}
-                      helperText={form.errors.name}
-                    />
+        <>
+          <ModalCard>
+            <Card>
+              <CardHeader
+                title=""
+                action={
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={handleCloseModal}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                }
+              />
+              <CardContent>
+                <form onSubmit={form.handleSubmit}>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={4}
+                  >
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Nome"
+                        variant="standard"
+                        fullWidth
+                        name="name"
+                        value={form.values.name}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.name && form.errors.name)}
+                        helperText={form.errors.name}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        label="URL"
+                        variant="standard"
+                        fullWidth
+                        name="url"
+                        value={form.values.url}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.url && form.errors.url)}
+                        helperText={
+                          !!(form.touched.url && form.errors.url) &&
+                          form.errors.url
+                        }
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button type="submit" variant="contained" fullWidth>
+                        Cadastrar
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      label="URL"
-                      variant="standard"
-                      fullWidth
-                      name="url"
-                      value={form.values.url}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.url && form.errors.url)}
-                      helperText={
-                        !!(form.touched.url && form.errors.url) &&
-                        form.errors.url
-                      }
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button type="submit" variant="contained" fullWidth>
-                      Cadastrar
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </CardContent>
-          </Card>
-        </ModalCard>
+                </form>
+              </CardContent>
+            </Card>
+          </ModalCard>
+        </>
       </Modal>
 
       <Loading loading={loading} />

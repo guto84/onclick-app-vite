@@ -13,7 +13,7 @@ import {
 export class CompanyMenuService {
   async execute(url: string): Promise<CompanyMenuOutput> {
     const httpRequest: HttpRequest = {
-      url: `${envAdapter.apiUrl}/companies/menu/${url}`,
+      url: `${envAdapter.apiUrl}/companies/${url}/menu`,
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

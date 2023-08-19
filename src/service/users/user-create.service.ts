@@ -8,7 +8,10 @@ import {
 export class UserCreateService {
   async execute(input: UserCreateInput): Promise<void> {
     const data = {
-      ...input,
+      name: input.name,
+      email: input.email,
+      password: input.password,
+      company: input.company,
       roles: input.roles.map((item: string) => ({
         id: item,
       })),

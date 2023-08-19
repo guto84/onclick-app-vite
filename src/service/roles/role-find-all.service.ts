@@ -18,9 +18,9 @@ export class RoleFindAllService {
 
     const response = await httpClientAdapter.request(httpRequest)
 
-    return response.data.map((item: RoleOutput) => ({
+    return response.data.map((item: any) => ({
       id: item.id,
-      rolename: item.rolename,
+      authority: item.authority,
     }))
   }
 }

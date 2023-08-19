@@ -14,5 +14,5 @@ export type User = {
 
 export type Role = {
   id: string
-  rolename: string
+  authority: string
 }

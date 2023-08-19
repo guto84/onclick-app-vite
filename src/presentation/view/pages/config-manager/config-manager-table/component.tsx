@@ -60,10 +60,10 @@ const Row = ({
           {config.name}
         </TableCell>
         <TableCell align="center" sx={{ fontSize: '18px' }}>
-          {config.min}
+          {config.minimum}
         </TableCell>
         <TableCell align="center" sx={{ fontSize: '18px' }}>
-          {config.max}
+          {config.maximum}
         </TableCell>
         <TableCell>
           <ButtonGroup>

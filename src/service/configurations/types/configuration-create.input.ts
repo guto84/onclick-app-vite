@@ -1,7 +1,7 @@
 export type ConfigurationCreateInput = {
   name: string
-  min: number
-  max: number
+  minimum: number
+  maximum: number
   category: {
     id: string
   }

@@ -12,7 +12,6 @@ export class ProductFindByIdConfigusItemsService {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }
 
@@ -31,8 +30,8 @@ export class ProductFindByIdConfigusItemsService {
           (config: Configuration) => ({
             id: config.id,
             name: config.name,
-            min: config.min,
-            max: config.max,
+            minimum: config.minimum,
+            maximum: config.maximum,
             configurationItems: config.configurationItems.map((item) => ({
               id: item.id,
               name: item.name,

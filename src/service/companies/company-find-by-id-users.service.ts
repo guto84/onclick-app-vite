@@ -3,7 +3,7 @@ import {
   envAdapter,
   httpClientAdapter,
 } from '../../infra/adapters'
-import { CompanyUsersOutput, Role, User } from './types'
+import { CompanyUsersOutput, User } from './types'
 
 export class CompanyFindByIdUsersService {
   async execute(id: string): Promise<CompanyUsersOutput> {
@@ -27,10 +27,6 @@ export class CompanyFindByIdUsersService {
         id: user.id,
         name: user.name,
         email: user.email,
-        roles: user.roles.map((role: Role) => ({
-          id: role.id,
-          rolename: role.rolename,
-        })),
       })),
     }
   }

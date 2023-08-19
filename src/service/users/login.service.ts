@@ -1,4 +1,4 @@
-import { LoginInput, Role } from '..'
+import { LoginInput } from '..'
 import {
   HttpRequest,
   envAdapter,
@@ -9,24 +9,23 @@ import { LoginOutput } from './types'
 export class LoginService {
   async execute(input: LoginInput): Promise<LoginOutput> {
     const httpRequest: HttpRequest = {
-      url: `${envAdapter.apiUrl}/login`,
+      url: `${envAdapter.apiUrl}/oauth2/token`,
       method: 'post',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic bXljbGllbnRpZDpteWNsaWVudHNlY3JldA==',
       },
       data: {
-        email: input.email,
+        username: input.email,
         password: input.password,
+        grant_type: 'password',
       },
     }
 
     const response = await httpClientAdapter.request(httpRequest)
-    const roles: Role[] = []
-    response.data.roles.map((role: any) => roles.push(role.rolename))
 
     return {
-      accessToken: response.data.token,
-      roles: JSON.stringify(roles),
+      accessToken: response.data.access_token,
     }
   }
 }

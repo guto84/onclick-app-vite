@@ -22,8 +22,8 @@ export class ConfigurationFindByIdService {
     return {
       id: data.id,
       name: data.name,
-      min: data.min,
-      max: data.max,
+      minimum: data.minimum,
+      maximum: data.maximum,
       category: {
         id: data.category.id,
       },

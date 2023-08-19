@@ -7,8 +7,8 @@ export type CategoryConfigsItemsOutput = {
 export type Config = {
   id: string
   name: string
-  min: number
-  max: number
+  minimum: number
+  maximum: number
   configurationItems: Type[]
 }
 

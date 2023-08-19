@@ -1,6 +1,6 @@
 export type RoleOutput = {
   id: string
-  rolename: RoleName
+  authority: RoleName
 }
 
 export enum RoleName {

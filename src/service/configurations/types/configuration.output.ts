@@ -1,8 +1,8 @@
 export type ConfigurationOutput = {
   id: string
   name: string
-  min: number
-  max: number
+  minimum: number
+  maximum: number
   category: {
     id: string
   }

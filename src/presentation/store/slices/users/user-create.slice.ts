@@ -16,7 +16,7 @@ export const userCreate = createAsyncThunk(
   'users/create',
   async (input: UserCreateInput) => {
     const service = new UserCreateService()
-    await service.execute(input)
+    return await service.execute(input)
   },
 )
 

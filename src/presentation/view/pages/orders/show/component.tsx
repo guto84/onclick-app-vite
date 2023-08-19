@@ -74,136 +74,138 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalCard>
-          <Card>
-            <CardHeader
-              title="Detalhes do Pedido"
-              action={
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                  onClick={() => handleModal(false)}
-                >
-                  <CloseIcon />
-                </IconButton>
-              }
-            />
-
-            <Divider />
-
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Dados pessoais
-              </Typography>
-              <DetailItem label="Nome" value={order.name} />
-              <DetailItem label="Telefone" value={phoneMask(order.phone)} />
-            </CardContent>
-
-            <Divider />
-
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Endereço
-              </Typography>
-              <DetailItem
-                label="Logradouro"
-                value={`${order.address}, ${order.addressNumber}`}
-              />
-              {order.addressComplement && (
-                <DetailItem
-                  label="Complemento"
-                  value={order.addressComplement || ''}
-                />
-              )}
-              <DetailItem label="Bairro" value={order.district} />
-              <DetailItem label="CEP" value={zipcodeMask(order.zipcode)} />
-            </CardContent>
-
-            <Divider />
-
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Pedido
-              </Typography>
-              <DetailItem label="Total" value={brlFormat(order.total)} />
-              <TreeView
-                aria-label="file system navigator"
-                defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ChevronRightIcon />}
-              >
-                {order.orderItems.map((item) => (
-                  <TreeItem
-                    key={item.id}
-                    nodeId={item.id}
-                    label={
-                      <strong>
-                        {item.quantity}x - {item.product.name} ={' '}
-                        {brlFormat(item.total)}
-                      </strong>
-                    }
+        <>
+          <ModalCard>
+            <Card>
+              <CardHeader
+                title="Detalhes do Pedido"
+                action={
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={() => handleModal(false)}
                   >
-                    {item.orderConfigurations.map((config) => (
-                      <TreeItem
-                        key={config.id}
-                        nodeId={config.id}
-                        label={`${config.quantity}x - ${config.name}`}
-                      />
-                    ))}
-                  </TreeItem>
-                ))}
-              </TreeView>
-            </CardContent>
+                    <CloseIcon />
+                  </IconButton>
+                }
+              />
 
-            <Divider />
+              <Divider />
 
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Status
-              </Typography>
-              <form onSubmit={form.handleSubmit}>
-                <Grid
-                  container
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={4}
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Dados pessoais
+                </Typography>
+                <DetailItem label="Nome" value={order.name} />
+                <DetailItem label="Telefone" value={phoneMask(order.phone)} />
+              </CardContent>
+
+              <Divider />
+
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Endereço
+                </Typography>
+                <DetailItem
+                  label="Logradouro"
+                  value={`${order.address}, ${order.addressNumber}`}
+                />
+                {order.addressComplement && (
+                  <DetailItem
+                    label="Complemento"
+                    value={order.addressComplement || ''}
+                  />
+                )}
+                <DetailItem label="Bairro" value={order.district} />
+                <DetailItem label="CEP" value={zipcodeMask(order.zipcode)} />
+              </CardContent>
+
+              <Divider />
+
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Pedido
+                </Typography>
+                <DetailItem label="Total" value={brlFormat(order.total)} />
+                <TreeView
+                  aria-label="file system navigator"
+                  defaultCollapseIcon={<ExpandMoreIcon />}
+                  defaultExpandIcon={<ChevronRightIcon />}
                 >
-                  <Grid item xs={12}>
-                    <FormControl variant="standard" fullWidth>
-                      <Select
-                        name="status"
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                        value={form.values.status}
-                        onChange={form.handleChange}
-                        label="Status"
-                      >
-                        <MenuItem value={StatusEnum.RECEIVED}>
-                          Recebido
-                        </MenuItem>
-                        <MenuItem value={StatusEnum.IN_PREPARATION}>
-                          Em Preparação
-                        </MenuItem>
-                        <MenuItem value={StatusEnum.READY}>Pronto</MenuItem>
-                        <MenuItem value={StatusEnum.OUT_FOR_DELIVERY}>
-                          Saiu para entrega
-                        </MenuItem>
-                        <MenuItem value={StatusEnum.DELIVERED}>
-                          Entregue
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
+                  {order.orderItems.map((item) => (
+                    <TreeItem
+                      key={item.id}
+                      nodeId={item.id}
+                      label={
+                        <strong>
+                          {item.quantity}x - {item.product.name} ={' '}
+                          {brlFormat(item.subTotal)}
+                        </strong>
+                      }
+                    >
+                      {item.orderConfigurations.map((config) => (
+                        <TreeItem
+                          key={config.configurationItem.id}
+                          nodeId={config.configurationItem.id}
+                          label={`${config.quantity}x - ${config.configurationItem.name}`}
+                        />
+                      ))}
+                    </TreeItem>
+                  ))}
+                </TreeView>
+              </CardContent>
+
+              <Divider />
+
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Status
+                </Typography>
+                <form onSubmit={form.handleSubmit}>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={4}
+                  >
+                    <Grid item xs={12}>
+                      <FormControl variant="standard" fullWidth>
+                        <Select
+                          name="status"
+                          labelId="demo-simple-select-standard-label"
+                          id="demo-simple-select-standard"
+                          value={form.values.status}
+                          onChange={form.handleChange}
+                          label="Status"
+                        >
+                          <MenuItem value={StatusEnum.RECEIVED}>
+                            Recebido
+                          </MenuItem>
+                          <MenuItem value={StatusEnum.IN_PREPARATION}>
+                            Em Preparação
+                          </MenuItem>
+                          <MenuItem value={StatusEnum.READY}>Pronto</MenuItem>
+                          <MenuItem value={StatusEnum.OUT_FOR_DELIVERY}>
+                            Saiu para entrega
+                          </MenuItem>
+                          <MenuItem value={StatusEnum.DELIVERED}>
+                            Entregue
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button type="submit" variant="contained" fullWidth>
+                        Alterar Status
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Button type="submit" variant="contained" fullWidth>
-                      Alterar Status
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </CardContent>
-          </Card>
-        </ModalCard>
+                </form>
+              </CardContent>
+            </Card>
+          </ModalCard>
+        </>
       </Modal>
 
       <Loading loading={loading} />

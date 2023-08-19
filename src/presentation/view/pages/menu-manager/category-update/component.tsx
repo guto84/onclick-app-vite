@@ -56,51 +56,53 @@ export const Component = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalCard>
-          <Card>
-            <CardHeader
-              title=""
-              action={
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                  onClick={handleCloseModal}
-                >
-                  <CloseIcon />
-                </IconButton>
-              }
-            />
-            <CardContent>
-              <form onSubmit={form.handleSubmit}>
-                <Grid
-                  container
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={4}
-                >
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Nome"
-                      variant="standard"
-                      fullWidth
-                      name="name"
-                      value={form.values.name}
-                      onChange={form.handleChange}
-                      error={!!(form.touched.name && form.errors.name)}
-                      helperText={form.errors.name}
-                    />
+        <>
+          <ModalCard>
+            <Card>
+              <CardHeader
+                title=""
+                action={
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={handleCloseModal}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                }
+              />
+              <CardContent>
+                <form onSubmit={form.handleSubmit}>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={4}
+                  >
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Nome"
+                        variant="standard"
+                        fullWidth
+                        name="name"
+                        value={form.values.name}
+                        onChange={form.handleChange}
+                        error={!!(form.touched.name && form.errors.name)}
+                        helperText={form.errors.name}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button type="submit" variant="contained" fullWidth>
+                        Salvar
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Button type="submit" variant="contained" fullWidth>
-                      Salvar
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-            </CardContent>
-          </Card>
-        </ModalCard>
+                </form>
+              </CardContent>
+            </Card>
+          </ModalCard>
+        </>
       </Modal>
 
       <Loading loading={loading} />

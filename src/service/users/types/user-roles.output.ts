@@ -4,11 +4,11 @@ export type UserRolesOutput = {
   email: string
   roles: {
     id: string
-    rolename: Role
+    authority: Role
   }[]
 }
 
 type Role = {
   id: string
-  rolename: string
+  authority: string
 }
