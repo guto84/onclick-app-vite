@@ -3,6 +3,5 @@ export type EnvAdapter = {
 }
 
 export const envAdapter: EnvAdapter = {
-  // apiUrl: process.env.API_URL || '',
-  apiUrl: 'http://localhost:8080',
+  apiUrl: import.meta.env.VITE_API_URL,
 }

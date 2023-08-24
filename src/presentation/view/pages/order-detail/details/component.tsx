@@ -80,15 +80,15 @@ export const Component = ({ order, loading }: Props) => {
                   label={
                     <strong>
                       {item.quantity}x - {item.product.name} ={' '}
-                      {brlFormat(item.total)}
+                      {brlFormat(item.subTotal)}
                     </strong>
                   }
                 >
                   {item.orderConfigurations.map((config) => (
                     <TreeItem
-                      key={config.id}
-                      nodeId={config.id}
-                      label={`${config.quantity}x - ${config.name}`}
+                      key={config.configurationItem.id}
+                      nodeId={config.configurationItem.id}
+                      label={`${config.quantity}x - ${config.configurationItem.name}`}
                     />
                   ))}
                 </TreeItem>
